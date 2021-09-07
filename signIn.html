@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+		integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="./css/signIn.css">
+	<script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-auth-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCbbKYErg8-8_o79SstrszHo07_mTXPCoc",
+            authDomain: "project-demo-c7a8f.firebaseapp.com",
+            projectId: "project-demo-c7a8f",
+            storageBucket: "project-demo-c7a8f.appspot.com",
+            messagingSenderId: "919524767565",
+            appId: "1:919524767565:web:855499decc62925b352904"
+        };
+
+        const firebaseApp = firebase.initializeApp(firebaseConfig);
+        const db = firebaseApp.firestore();
+        const auth = firebaseApp.auth();
+    </script>
+</head>
+
+<body>
+	<div class="container">
+		<form action="" class="form form-signIn" method="POST">
+			<h2 class="title">Thành viên đăng nhập</h2>
+			<div class="form-group">
+				<label for="email-SignIn">Email</label>
+				<input type="text" id="email-SignIn" name="email" class="formSignIn"
+					placeholder="  vd: chungocbinh.167@gmail.com">
+				<div class="message--error"></div>
+			</div>
+			<div class="form-group">
+				<label for="passwordSignIn">Mật khẩu</label>
+				<input type="password" id="password" name="passwordSignIn" class="formSignIn"
+					placeholder="  Nhập mật khẩu">
+				<div class="checkPass">
+					<label for="showPasswordSignIn" class="lablePass"><i class="far fa-eye-slash"></i></label>
+					<input type="checkbox" id="showPasswordSignIn" class="isShowPass">
+				</div>
+				<div class="message--error"></div>
+			</div>
+			<button class="btn signIn">Đăng nhập</button>
+			<div class="forgetPass">
+				<a href="#">Quên mật khẩu</a>
+			</div>
+			<div class="signUpaccount">
+				<p>Bạn chưa có tài khoản?</p>
+				<a href="#" class="link-createAccount">Đăng ký miễn phí ngay</a>
+			</div>
+		</form>
+		<form action="" class="form form-signUp form-hiden" method="POST">
+			<h2 class="title">Đăng ký thành viên</h2>
+			<div class="form-group">
+				<label for="name">Họ tên</label>
+				<input type="text" id="name" name="name" class="formInput " placeholder="  vd: Chu Ngoc Binh">
+				<div class="message--error"></div>
+			</div>
+			<div class="form-group">
+				<label for="email-SignUp">Email</label>
+				<input type="text" id="email-SignUp" name="email" class="formInput "
+					placeholder="  vd: chungocbinh.167@gmail.com">
+				<div class="message--error"></div>
+			</div>
+			<div class="form-group">
+				<label for="passwordSignUp">Mật khẩu</label>
+				<input type="password" id="passwordSignUp" name="password" class="formInput "
+					placeholder="  Nhập mật khẩu" class="inputPass">
+				<div class="checkPass">
+					<label for="showPasswordSignUp" class="lablePass"><i class="far fa-eye-slash"></i></label>
+					<input type="checkbox" id="showPasswordSignUp" class="isShowPass">
+				</div>
+				<div class="message--error"></div>
+			</div>
+			<div class="form-group">
+				<label for="confirmPassword">Nhập lại mật khẩu</label>
+				<input type="password" id="confirmPassword" name="confirmPassword" class="formInput "
+					placeholder="  Nhập lại mật khẩu" class="inputPass">
+				<div class="checkPass">
+					<label for="showConfirmPassword" class="lablePass"><i class="far fa-eye-slash"></i></label>
+					<input type="checkbox" id="showConfirmPassword" class="isShowPass">
+				</div>
+				<div class="message--error"></div>
+			</div>
+			<div class="check isReceiveEmail">
+				<input type="checkbox" id="checkText">
+				<label for="checkText">Nhận thông báo về các tin tức & sự kiện mới nhất của chúng tôi. (Có thể hủy đăng
+					ký bất cứ lúc nào.) </label>
+			</div>
+			<button class="btn signUp">Đăng ký</button>
+			<div class="termsOfService">
+				<p class="agreeText">Bằng cách đăng ký, bạn đồng ý với các <a href="#">điều khoản sử dụng</a> của chúng
+					tôi</p>
+				<p>Bạn đã có tài khoản? <a href="#" class="link-signIn">Đăng nhập</a></p>
+			</div>
+		</form>
+	</div>
+	<script type="module" src="./js/screen/signInScreen.js"></script>
+</body>
+
+</html>

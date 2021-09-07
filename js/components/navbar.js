@@ -29,3 +29,4 @@ export default class Navbar extends BaseComponent {
         return $navlink
     }
 }
+

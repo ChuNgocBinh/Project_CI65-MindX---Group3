@@ -1,0 +1,155 @@
+*{
+	font-family: 'Quicksand', sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root{
+	--color-btn: #1dbfaf;
+}
+
+body{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-image: 
+    linear-gradient(to top,rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),
+    url('/img/photo.jpg');
+	}
+
+.container{
+	width: 400px;
+	background-color: rgba(255, 255, 255, 0.774);
+	padding: 50px;
+	border-radius: 30px;
+	margin: auto;
+}
+
+.form .title{
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.form-group{
+	margin-bottom: 8px;
+	position: relative;
+}
+
+.form-group label{
+	display: block;
+	margin: 4px 0px;
+	font-weight: 600;
+}
+
+.form-group input{
+	width: 100%;
+	height: 40px;
+	outline: none;
+	padding-left: 10px;
+	border-radius: 5px;
+}
+
+.checkPass > input{
+	display: none;
+}
+
+.checkPass {
+	position: absolute;
+	top: 30px;
+	left: 270px;
+	cursor: pointer;
+}
+
+.form-group .formSignIn{
+	border: 1px black solid;
+	outline: none;
+}
+
+.form-group .formInput{
+	border: 1px black solid;
+	outline: none;
+
+}
+
+.form-group .form-error{
+	border: 1px red solid;
+	/* background-color: rgba(255, 0, 0, 0.158); */
+}
+
+.form-group .message--error{
+	color: red;
+}
+
+.form-group .form-success{
+	border: 1px lime solid;
+}
+
+.btn{
+	width: 100%;
+	height: 40px;
+	background-color: var(--color-btn);
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: 600;
+	color: white;
+	margin: 12px 0;
+}
+
+.forgetPass{
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.forgetPass a{
+	color: var(--color-btn);
+}
+
+.signUpaccount{
+	text-align: center;
+}
+
+.signUpaccount a{
+	color: var(--color-btn);
+	font-weight: 600;
+
+}
+
+.check {
+	display: flex;
+	flex-direction: row;
+	/* align-items: baseline; */
+}
+
+.check > input {
+	height: 60px;
+	width: 60px;
+	margin-right: 8px;
+}
+
+.termsOfService{
+	text-align: center;
+}
+
+.termsOfService p:first-child a{
+color: black;}
+
+.termsOfService p:last-child{
+	margin-top: 12px;
+}
+
+.termsOfService p:last-child a{
+	color: var(--color-btn);
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.form-hiden{
+	display: none;
+}
+
+
+

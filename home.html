@@ -13,6 +13,23 @@
 		integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="stylesheet" href="./css/home.css">
+	<script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-auth-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCbbKYErg8-8_o79SstrszHo07_mTXPCoc",
+            authDomain: "project-demo-c7a8f.firebaseapp.com",
+            projectId: "project-demo-c7a8f",
+            storageBucket: "project-demo-c7a8f.appspot.com",
+            messagingSenderId: "919524767565",
+            appId: "1:919524767565:web:855499decc62925b352904"
+        };
+
+        const firebaseApp = firebase.initializeApp(firebaseConfig);
+        const db = firebaseApp.firestore();
+        const auth = firebaseApp.auth();
+    </script>
 </head>
 
 <body>
@@ -55,9 +72,9 @@
 			</div>
 			<div class="content">
 				<p class="content__title">Tất cả</p>
-				<div class="content__items">
+				<!-- <div class="content__items">
 					<div class="img-item">
-						<img src="./img/item1.jpg" alt="img1">
+						<img src="./img/img-para/img1.jpg" alt="img1">
 					</div>
 					<div class="para-items">
 						<div class="item-info">
@@ -72,79 +89,8 @@
 							<span id="view" class="item"><i class="fas fa-eye"></i><span class="number-like">0</span></span>
 						</div>
 					</div>
-				</div>
-				<div class="content__items">
-					<div class="img-item">
-						<img src="./img/item1.jpg" alt="img1">
-					</div>
-					<div class="para-items">
-						<div class="item-info">
-							<h3>Vịt om măng chua nóng hổi nhưng giúp "hạ hỏa", dễ làm ngày giãn cách</h3>
-							<p>Thịt vịt mát, dễ chế biến, dễ ăn, hợp túi tiền của mọi tầng lớp. Món vịt om măng ngon...
-							</p>
-						</div>
-						<div class="item-comment">
-							<label for="like" class="item"><i class="far fa-heart"></i> <span class="number-like">0</span></label>
-							<input type="checkbox" id="like" class="item">
-							<span id="comment" class="item"><i class="fas fa-comments"></i><span class="number-like">0</span></span>
-							<span id="view" class="item"><i class="fas fa-eye"></i><span class="number-like">0</span></span>
-						</div>
-					</div>
-				</div>
-				<div class="content__items">
-					<div class="img-item">
-						<img src="./img/item1.jpg" alt="img1">
-					</div>
-					<div class="para-items">
-						<div class="item-info">
-							<h3>Vịt om măng chua nóng hổi nhưng giúp "hạ hỏa", dễ làm ngày giãn cách</h3>
-							<p>Thịt vịt mát, dễ chế biến, dễ ăn, hợp túi tiền của mọi tầng lớp. Món vịt om măng ngon...
-							</p>
-						</div>
-						<div class="item-comment">
-							<label for="like" class="item"><i class="far fa-heart"></i> <span class="number-like">0</span></label>
-							<input type="checkbox" id="like" class="item">
-							<span id="comment" class="item"><i class="fas fa-comments"></i><span class="number-like">0</span></span>
-							<span id="view" class="item"><i class="fas fa-eye"></i><span class="number-like">0</span></span>
-						</div>
-					</div>
-				</div>
-				<div class="content__items">
-					<div class="img-item">
-						<img src="./img/item1.jpg" alt="img1">
-					</div>
-					<div class="para-items">
-						<div class="item-info">
-							<h3>Vịt om măng chua nóng hổi nhưng giúp "hạ hỏa", dễ làm ngày giãn cách</h3>
-							<p>Thịt vịt mát, dễ chế biến, dễ ăn, hợp túi tiền của mọi tầng lớp. Món vịt om măng ngon...
-							</p>
-						</div>
-						<div class="item-comment">
-							<label for="like" class="item"><i class="far fa-heart"></i> <span class="number-like">0</span></label>
-							<input type="checkbox" id="like" class="item">
-							<span id="comment" class="item"><i class="fas fa-comments"></i><span class="number-like">0</span></span>
-							<span id="view" class="item"><i class="fas fa-eye"></i><span class="number-like">0</span></span>
-						</div>
-					</div>
-				</div>
-				<div class="content__items">
-					<div class="img-item">
-						<img src="./img/item1.jpg" alt="img1">
-					</div>
-					<div class="para-items">
-						<div class="item-info">
-							<h3>Vịt om măng chua nóng hổi nhưng giúp "hạ hỏa", dễ làm ngày giãn cách</h3>
-							<p>Thịt vịt mát, dễ chế biến, dễ ăn, hợp túi tiền của mọi tầng lớp. Món vịt om măng ngon...
-							</p>
-						</div>
-						<div class="item-comment">
-							<label for="like" class="item"><i class="far fa-heart"></i> <span class="number-like">0</span></label>
-							<input type="checkbox" id="like" class="item">
-							<span id="comment" class="item"><i class="fas fa-comments"></i><span class="number-like">0</span></span>
-							<span id="view" class="item"><i class="fas fa-eye"></i><span class="number-like">0</span></span>
-						</div>
-					</div>
-				</div>
+				</div> -->
+				
 			</div>
 		</div>
 		<!-- -----footer--------------- -->

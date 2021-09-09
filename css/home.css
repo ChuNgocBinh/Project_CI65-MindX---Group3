@@ -177,15 +177,52 @@
 .slider__content a:hover{
     background-color: var(--color-orange);
 }
+
+/* recipes (featured + main) */
+.recipes {
+    display: flex;
+    width: 100%;
+    position: relative;
+}
+
+/* featured */
+.featured, .featured__item {
+    min-height: 75vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+}
+.featured-content {
+   /* background-image: url("../img/featured-frame.png");
+   background-size: 100%; */
+   background-color:#eeeeee;
+   background-repeat: no-repeat;
+}
+.featured-info > h3{
+    text-align: center;
+    font-size: 3rem;
+}
+.featured-info > p{
+    font-size: 2rem;
+}
+
 /* -------------------sửa phần main-------------------- */
 
+.main, .featured {
+    width: 50%;
+    overflow: auto;
+    height: 75vh;
+    margin-right: 0;
+}
 
 .main .content{
     flex: 4;
 }
 
 .main .content{
-    margin-left: 10px;
+    /* margin-left: 10px; */
+    margin-bottom: 0;
     background-color: white;
 }
 

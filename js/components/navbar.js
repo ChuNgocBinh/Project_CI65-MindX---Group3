@@ -3,30 +3,40 @@ import BaseComponent from "./BaseComponent.js";
 export default class Navbar extends BaseComponent {
     constructor(props) {
         super(props);
-
-        this.state = [
-            { href: './home.html', name:'Trang chủ'},
-            { href: '#', name:'Góc Review' },
-            { href: '#', name:'Học nấu ăn' },
-            { href: '#', name:'Blog'},
-            { href: './about.html', name:'Giới thiệu'},
-            { href: './contact.html', name:'Liên hệ' }
-        ]
     }
-
     render() {
-        let $navlink = document.createElement('div');
-        $navlink.classList.add('navlink');
-        let arrLink = this.state.map((link)=>{
-            let $tag_a = document.createElement('a');
-            $tag_a.href = link.href;
-            $tag_a.innerHTML = link.name;
-            // $tag_a.classList.add(`${link.class}`);
-            return $tag_a
-        })
-        $navlink.append(...arrLink)
-        $navlink.querySelector('a').classList.add('link-active');
-        return $navlink
+        let nav = document.createElement('div');
+        nav.classList.add('navbar');
+        nav.innerHTML = `
+                <div class="logo-img">
+					<img src="./img/Image-1-Copy-1024x629.png" alt="logo">
+				</div>
+				<div class="nav-link">
+					<ul class="nav">
+						<li class="link-active"><a href="#">Trang chủ</a></li>
+						<li class="dropdown"><a href="#">Công thức <i class="fas fa-angle-down"></i></a>
+							<ul class="sub-nav">
+								<li><a href="#">Tạo món ăn</a></li>
+								<li><a href="#">Các món ăn đã thêm</a></li>
+								<li><a href="#">Danh sách món ăn</a></li>
+							</ul>
+						</li>
+						<li><a href="#">Món ăn ưa thích</a></li>
+						<li><a href="#">Giới thiệu</a></li>
+						<li><a href="#">Liên hệ</a></li>
+					</ul>
+				</div>
+				<div class="nav-search">
+					<div class="input-search">
+						<input type="search" placeholder="Search..." id="search">
+						<button class="btn-search"><i class="fas fa-search"></i></button>
+					</div>
+					<div class="link-login">
+						<a href="#">Đăng nhập</a>
+					</div>
+				</div>
+                `
+                return nav
     }
 }
 

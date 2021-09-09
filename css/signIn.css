@@ -62,13 +62,8 @@ body{
 	cursor: pointer;
 }
 
-.form-group .formSignIn{
-	border: 1px black solid;
-	outline: none;
-}
-
 .form-group .formInput{
-	border: 1px black solid;
+	border: 1px #ccc solid;
 	outline: none;
 
 }

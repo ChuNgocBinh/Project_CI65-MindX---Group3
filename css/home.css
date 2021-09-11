@@ -186,12 +186,14 @@
 }
 
 /* featured */
-.featured, .featured__item {
-    min-height: 75vh;
+.featured__item {
+    height: 90vh;
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
     align-items: flex-end;
+    position: sticky;
+    top: 60px;
 }
 .featured-content {
    /* background-image: url("../img/featured-frame.png");
@@ -211,8 +213,8 @@
 
 .main, .featured {
     width: 50%;
-    overflow: auto;
-    height: 75vh;
+    /* overflow: auto;
+    height: 75vh; */
     margin-right: 0;
 }
 

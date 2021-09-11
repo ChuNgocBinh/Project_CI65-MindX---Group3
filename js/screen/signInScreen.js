@@ -147,9 +147,14 @@ if ($formSignUp) {
 				values[inputElement.name] = inputElement.value;
 				return values
 			}, {})
-			register(formValues.name, formValues.email, formValues.password)
-			console.log(formValues);
-			// window.location.reload()
+			try {
+				register(formValues.name, formValues.email, formValues.password)
+
+				// window.location.reload()
+				
+			} catch (err) {
+				console.log(err.name)
+			}
 		}
 
 	})
@@ -200,8 +205,12 @@ if ($formSignIn) {
 			}, {})
 			login(formValuesSignIn.email, formValuesSignIn.passwordSignIn)
 			console.log(formValuesSignIn)
-		
+			window.location.href = "./home.html"
+			
 		}
 
 	})
 }
+
+// console.log(getCurrentUser())
+// export {}

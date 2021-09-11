@@ -1,5 +1,5 @@
 import BaseComponent from "./BaseComponent.js";
-
+import { getCurrentUser } from "../models/user.js";
 export default class Navbar extends BaseComponent {
     constructor(props) {
         super(props);
@@ -16,7 +16,7 @@ export default class Navbar extends BaseComponent {
 						<li class="link-active"><a href="#">Trang chủ</a></li>
 						<li class="dropdown"><a href="#">Công thức <i class="fas fa-angle-down"></i></a>
 							<ul class="sub-nav">
-								<li><a href="#">Tạo món ăn</a></li>
+								<li><a href="./createPost.html">Tạo món ăn</a></li>
 								<li><a href="#">Các món ăn đã thêm</a></li>
 								<li><a href="#">Danh sách món ăn</a></li>
 							</ul>
@@ -32,11 +32,20 @@ export default class Navbar extends BaseComponent {
 						<button class="btn-search"><i class="fas fa-search"></i></button>
 					</div>
 					<div class="link-login">
-						<a href="#">Đăng nhập</a>
+						<a href="./signIn.html">Đăng nhập</a>
 					</div>
 				</div>
                 `
                 return nav
     }
+
+	async handleNameUser(){
+		auth.currentUser;
+		let NameLogin = document.querySelector('.link-login')
+		await getCurrentUser()
+		// if(nameUser !== null){
+			// NameLogin.innerHTML = nameUser.displayName
+		// }
+	}
 }
 

@@ -1,19 +1,23 @@
+var editor;
+ClassicEditor
+.create(document.querySelector('#textContent'))
+.then( newEditor => {
+    editor = newEditor;
+} )
+.catch(error => {
+    console.error(error);
+});
+
 let btn = document.querySelector('.post-btn');
 btn.onclick = function () {
-    // let title = document.querySelector('#title');
-    // let subTitle = document.querySelector('#subTitle');
-    // let image = document.querySelector('#image');
-    // let textContent = document.querySelector('.ck-content ');
-    // console.log(textContent.value)
-
-    let data = CKEDITOR.instances.text-content.getData();
+    let data = editor.getData();
     console.log(data)
-
-
-
-
-
-
+    editor.setData("")
+//     let title = document.querySelector('#title');
+//     let subTitle = document.querySelector('#subTitle');
+//     let image = document.querySelector('#image');
+//     let textContent = document.querySelector('.ck-content ');
+//     console.log(textContent.value);
 
 
 
@@ -30,11 +34,12 @@ btn.onclick = function () {
     //     .catch((error) => {
     //         console.error("Error adding document: ", error);
     //     });
-}
+    // }
 
-//     db.collection("users").get().then((querySnapshot) => {
-//         querySnapshot.forEach((doc) => {
-//             console.log(doc.data());
-//         });
-//     });
-// }
+    //     db.collection("users").get().then((querySnapshot) => {
+    //         querySnapshot.forEach((doc) => {
+    //             console.log(doc.data());
+    //         });
+    //     });
+}
+    

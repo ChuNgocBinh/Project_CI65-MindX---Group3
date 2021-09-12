@@ -1,6 +1,11 @@
 export async function register(name, email, password) {
-    await auth.createUserWithEmailAndPassword(email, password); // xảy ra hiện tượng bất đồng bộ
-    await auth.currentUser.updateProfile({displayName:`${name}`})
+    try {
+        await auth.createUserWithEmailAndPassword(email, password); // xảy ra hiện tượng bất đồng bộ
+        console.log('đăng ký thành công');
+    } catch (error) {
+        console.log(error.message)
+    }
+
 }
 
 export async function login(email, password) {

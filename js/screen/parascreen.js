@@ -73,10 +73,11 @@ export default class Posts extends BaseComponent {
 		return postItem
 
 
+
+
+
+
+
+
 	}
-
-
-
-
-
 }

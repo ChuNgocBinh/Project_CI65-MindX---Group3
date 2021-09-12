@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script>
     <link rel="stylesheet" href="./css/home.css">
     <link rel="stylesheet" href="./css/createPost.css">
     <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-app-compat.js"></script>
@@ -31,6 +32,7 @@
         const db = firebaseApp.firestore();
         const auth = firebaseApp.auth();
     </script>
+
 </head>
 
 <body>
@@ -52,17 +54,28 @@
             </div>
             <div class="post-group post__content">
                 <label for="text-content">Nội dung bài viết</label>
-                <textarea name="text" id="text-content" ></textarea>
+                <textarea name="text" id="text-content"></textarea>
             </div>
-            <button class="btn">Đăng bài</button>
+            <button class="post-btn">Đăng bài</button>
         </div>
+
         <!-- -----footer--------------- -->
         <footer></footer>
         <div class="copyright">
             <p>Copyright © 2021 Group 3 MindX. All Rights Reserved</p>
         </div>
     </div>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#text-content'))
+            .catch(error => {
+                console.error(error);
+            });
+            
+    </script>
+    
     <script type="module" src="./js/main.js"></script>
+    <script src="./js/screen/createPost.js"></script>
 </body>
 
 </html>

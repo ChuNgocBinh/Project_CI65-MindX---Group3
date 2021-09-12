@@ -25,17 +25,3 @@ $featured.append(_featured.render());
 
 
 
-// let btn = document.getElementById('nhap')
-// let input = document.getElementById('nhaptext')
-
-db.collection("nam").add({
-    name: 'vu',
-    age: 25,
-    gender: 'Female'
-})
-    .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
-    })
-    .catch((error) => {
-        console.error("Error adding document: ", error);
-    });

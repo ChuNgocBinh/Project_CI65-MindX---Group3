@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes List</title>
+    <link rel="stylesheet" href="./css/allRecipes.css">
+    <link rel="stylesheet" href="./css/home.css">
+    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-auth-compat.js"></script>
+    <script>
+        // const firebaseConfig = {
+        //     apiKey: "AIzaSyCbbKYErg8-8_o79SstrszHo07_mTXPCoc",
+        //     authDomain: "project-demo-c7a8f.firebaseapp.com",
+        //     projectId: "project-demo-c7a8f",
+        //     storageBucket: "project-demo-c7a8f.appspot.com",
+        //     messagingSenderId: "919524767565",
+        //     appId: "1:919524767565:web:855499decc62925b352904"
+        // };
+        const firebaseConfig = {
+            apiKey: "AIzaSyB2o9FBKHWXbKwr0cWeIjJF9sHGUet1S7I",
+            authDomain: "project-4fb10.firebaseapp.com",
+            projectId: "project-4fb10",
+            storageBucket: "project-4fb10.appspot.com",
+            messagingSenderId: "1011810849176",
+            appId: "1:1011810849176:web:11a9214aafbc461ae61bed"
+        };
+
+        const firebaseApp = firebase.initializeApp(firebaseConfig);
+        const db = firebaseApp.firestore();
+        const auth = firebaseApp.auth();
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header"></div>
+        <div class="display"></div>
+        <!-- -----footer--------------- -->
+        <footer></footer>
+        <div class="copyright">
+            <p>Copyright © 2021 Group 3 MindX. All Rights Reserved</p>
+        </div>
+    </div>
+    <script type="module" src="./js/main.js"></script>
+</body>
+</html>

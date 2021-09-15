@@ -19,14 +19,6 @@
     <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-auth-compat.js"></script>
     <script>
-        // const firebaseConfig = {
-        //     apiKey: "AIzaSyCbbKYErg8-8_o79SstrszHo07_mTXPCoc",
-        //     authDomain: "project-demo-c7a8f.firebaseapp.com",
-        //     projectId: "project-demo-c7a8f",
-        //     storageBucket: "project-demo-c7a8f.appspot.com",
-        //     messagingSenderId: "919524767565",
-        //     appId: "1:919524767565:web:855499decc62925b352904"
-        // };
         const firebaseConfig = {
             apiKey: "AIzaSyB2o9FBKHWXbKwr0cWeIjJF9sHGUet1S7I",
             authDomain: "project-4fb10.firebaseapp.com",
@@ -47,34 +39,23 @@
     <div class="container">
         <div class="header"></div>
         <div class="master">
-            <h2>Tạo món ăn mới</h2>
-            <div class="post-group post__title">
-                <label for="title">Tiêu đề</label>
-                <input type="text" id="title" name="title">
-            </div>
-            <div class="post-group post__subTitle">
-                <label for="subTitle">Phụ đề</label>
-                <input type="text" id="subTitle" name="subTitle">
-            </div>
-            <div class="post-group post__image">
-                <label for="image">Ảnh đại diện bài viết</label>
-                <input type="file" name="image" id="image">
-            </div>
-            <div class="post-group post__content">
-                <label for="editor">Nội dung bài viết</label>
-                <div id="editor"></div>
-            </div>
-            <button class="post-btn" id="submit">Đăng bài</button>
         </div>
+        <div class="para para-hiden">
+            <h2 class="title-post"></h2>
+            <h3 class="subTitle-post"></h3>
+            <p class="content-post"></p>
+            <button class="btn btn-close">Đóng</button>
+        </div>
+
         <!-- -----footer--------------- -->
         <footer></footer>
         <div class="copyright">
             <p>Copyright © 2021 Group 3 MindX. All Rights Reserved</p>
         </div>
     </div>
+
     
     <script type="module" src="./js/main.js"></script>
-    <script src="./js/screen/createPost.js"></script>
+    <script src="./js/screen/listPosts.js"></script>
 </body>
-
 </html>

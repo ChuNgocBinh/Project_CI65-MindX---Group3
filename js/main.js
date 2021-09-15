@@ -1,7 +1,7 @@
 import Navbar from "./components/navbar.js";
 import Footer from "./components/footer.js";
 import Posts from "./screen/parascreen.js";
-import Featured from "./screen/featured.js"
+import Featured from "./screen/featured.js";
 
 let _navbar = new Navbar();
 let $navbar = document.querySelector('.header');
@@ -19,6 +19,8 @@ $main.append(..._posts.render());
 let _featured = new Featured();
 let $featured = document.querySelector('.featured');
 $featured.append(_featured.render());
+
+
 
 
 

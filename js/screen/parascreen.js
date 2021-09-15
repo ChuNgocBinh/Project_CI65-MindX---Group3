@@ -59,6 +59,7 @@ export default class Posts extends BaseComponent {
 					<div class="item-info">
 						<h3>${item.title}</h3>
 						<p>${item.content}</p>
+						<a href="#">Xem chi tiết</a>
 					</div>
 					<div class="item-comment">
 						<label for="like" class="item"><i class="far fa-heart"></i> <span class="number-like">0</span></label>

@@ -261,10 +261,41 @@
 
 .para-items{
     position: relative;
+    flex: 4;
+}
+
+.img-item{
+    flex: 1;
+
+}
+
+.content__items .img-item{
+    width: 185px;
+    height: 140px;
+}
+
+.img-item img{
+    /* width: 185px;
+    height: auto; */
+    object-fit: cover;
+}
+
+.para-items .item-info{
+    padding-bottom: 30px;
 }
 
 .content__items .para-items{
     margin: 0px 20px;
+}
+
+.item-info  a{
+    text-decoration: none;
+    color: black;
+}
+
+.item-info  > a{
+    font-weight: 500;
+    text-decoration: underline;
 }
 
 .item-info > p{
@@ -274,7 +305,7 @@
 .para-items .item-comment{
     position: absolute;
     right: 20px;
-    bottom: 10px;
+    bottom: 1px;
 }
 
 .content__items .item{

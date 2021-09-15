@@ -13,11 +13,11 @@ export default class Navbar extends BaseComponent {
 				</div>
 				<div class="nav-link">
 					<ul class="nav">
-						<li class="link-active"><a href="#">Trang chủ</a></li>
+						<li class="link-active"><a href="./home.html">Trang chủ</a></li>
 						<li class="dropdown"><a href="#">Công thức <i class="fas fa-angle-down"></i></a>
 							<ul class="sub-nav">
 								<li><a href="./createPost.html">Tạo món ăn</a></li>
-								<li><a href="#">Các món ăn đã thêm</a></li>
+								<li><a href="./listPosts.html">Các món ăn đã thêm</a></li>
 								<li><a href="#">Danh sách món ăn</a></li>
 							</ul>
 						</li>

@@ -13,7 +13,7 @@ export async function login(email, password) {
 }
 
 export async function getCurrentUser() {
-    // await auth.currentUser(displayName)
+    await auth.currentUser.displayName
 }
 
 export function updateUser() {

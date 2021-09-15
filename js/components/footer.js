@@ -11,7 +11,7 @@ export default class Footer extends BaseComponent {
                 <h2>About US</h2>
                 <div class="footer__about-content">
                     <img src="./img/Image-1-Copy-1024x629.png" alt="logo">
-                    <p> Chùng tôi, với mong muốn đem lại cho mọi gia đình mỗi bữa cơm ngon và vô cùng bỗ dưỡng.
+                    <p> Chùng tôi có mong muốn đem lại cho mọi gia đình mỗi bữa cơm ngon và vô cùng bỗ dưỡng.
                         Đây là nơi để bạn độc giả thỏa sức chia sẻ các món ăn ngon, là nơi cung cấp các công thức nấu ăn, và
                         thực đơn cho
                         mọi gia đình việt.

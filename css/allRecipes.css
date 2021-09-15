@@ -1,0 +1,34 @@
+body {
+    padding-top: 50px;
+}
+.display{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 2vw;
+}
+.card{
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2vh;
+    background-color: aliceblue;
+    transition: 0.5s;
+    padding: 1vh;
+}
+.card:hover{
+    background-color: gray;
+    cursor: pointer;
+}
+.card_img, .card_content{
+    height:25vh;
+    width: 20vw;
+}
+.card_content{
+    display: flex;
+    justify-content: space-between;
+}
+/* .card-comment{
+    position: absolute;
+    bottom: 0%;
+} */

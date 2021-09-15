@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Recipe</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Recipes List</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script>
+		integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/allRecipes.css">
     <link rel="stylesheet" href="./css/home.css">
-    <link rel="stylesheet" href="./css/createPost.css">
     <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-auth-compat.js"></script>
@@ -40,41 +35,18 @@
         const db = firebaseApp.firestore();
         const auth = firebaseApp.auth();
     </script>
-
 </head>
-
 <body>
     <div class="container">
         <div class="header"></div>
-        <div class="master">
-            <h2>Tạo món ăn mới</h2>
-            <div class="post-group post__title">
-                <label for="title">Tiêu đề</label>
-                <input type="text" id="title" name="title">
-            </div>
-            <div class="post-group post__subTitle">
-                <label for="subTitle">Phụ đề</label>
-                <input type="text" id="subTitle" name="subTitle">
-            </div>
-            <div class="post-group post__image">
-                <label for="image">Ảnh đại diện bài viết</label>
-                <input type="file" name="image" id="image">
-            </div>
-            <div class="post-group post__content">
-                <label for="editor">Nội dung bài viết</label>
-                <div id="editor"></div>
-            </div>
-            <button class="post-btn" id="submit">Đăng bài</button>
-        </div>
+        <div class="display"></div>
         <!-- -----footer--------------- -->
         <footer></footer>
         <div class="copyright">
             <p>Copyright © 2021 Group 3 MindX. All Rights Reserved</p>
         </div>
     </div>
-    
     <script type="module" src="./js/main.js"></script>
-    <script src="./js/screen/createPost.js"></script>
+    <script type="module" src="./js/renderRecipes.js"></script>
 </body>
-
 </html>

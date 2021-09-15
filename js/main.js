@@ -12,13 +12,6 @@ let _footer = new Footer();
 let $footer = document.querySelector('footer');
 $footer.append(_footer.render());
 
-let _posts = new Posts();
-let $main = document.querySelector('.main');
-$main.append(..._posts.render());
-
-let _featured = new Featured();
-let $featured = document.querySelector('.featured');
-$featured.append(_featured.render());
 
 
 

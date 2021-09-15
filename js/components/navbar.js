@@ -1,13 +1,13 @@
 import BaseComponent from "./BaseComponent.js";
 import { getCurrentUser } from "../models/user.js";
 export default class Navbar extends BaseComponent {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        let nav = document.createElement('div');
-        nav.classList.add('navbar');
-        nav.innerHTML = `
+	constructor(props) {
+		super(props);
+	}
+	render() {
+		let nav = document.createElement('div');
+		nav.classList.add('navbar');
+		nav.innerHTML = `
                 <div class="logo-img">
 					<img src="./img/Image-1-Copy-1024x629.png" alt="logo">
 				</div>
@@ -18,7 +18,7 @@ export default class Navbar extends BaseComponent {
 							<ul class="sub-nav">
 								<li><a href="./createPost.html">Tạo món ăn</a></li>
 								<li><a href="./listPosts.html">Các món ăn đã thêm</a></li>
-								<li><a href="#">Danh sách món ăn</a></li>
+								<li><a href="./allRecipes.html">Danh sách món ăn</a></li>
 							</ul>
 						</li>
 						<li><a href="#">Món ăn ưa thích</a></li>
@@ -36,16 +36,12 @@ export default class Navbar extends BaseComponent {
 					</div>
 				</div>
                 `
-                return nav
-    }
+		return nav
+	}
 
-	async handleNameUser(){
-		auth.currentUser;
-		let NameLogin = document.querySelector('.link-login')
-		await getCurrentUser()
-		// if(nameUser !== null){
-			// NameLogin.innerHTML = nameUser.displayName
-		// }
+	handleNameUser() {
+		let NameLogin = document.querySelector('.link-login').innerHTML;
+		console.log(getCurrentUser(NameLogin))
 	}
 }
 

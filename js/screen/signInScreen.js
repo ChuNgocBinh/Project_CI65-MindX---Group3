@@ -149,9 +149,6 @@ if ($formSignUp) {
 			}, {})
 			try {
 				register(formValues.name, formValues.email, formValues.password)
-
-				// window.location.reload()
-				
 			} catch (err) {
 				console.log(err.name)
 			}
@@ -204,9 +201,6 @@ if ($formSignIn) {
 				return values
 			}, {})
 			login(formValuesSignIn.email, formValuesSignIn.passwordSignIn)
-			console.log(formValuesSignIn)
-			window.location.href = "./home.html"
-			
 		}
 
 	})

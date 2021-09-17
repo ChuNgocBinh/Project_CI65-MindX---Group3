@@ -28,7 +28,7 @@ body {
     display: flex;
     justify-content: space-between;
 }
-/* .card-comment{
+.card-comment{
     position: absolute;
     bottom: 0%;
-} */
+}

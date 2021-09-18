@@ -35,7 +35,9 @@ export default class Recipes extends BaseComponent {
             let $contentItem = document.createElement('div');
 			$contentItem.classList.add('card');
             $contentItem.innerHTML = `
-                
+				<div class="card-img">
+					<img src="${item.image}" alt="img">
+			 	</div>
 				<div class="card-content">
 					<div class="card-info">
 						<h3>${item.title}</h3>
@@ -52,9 +54,6 @@ export default class Recipes extends BaseComponent {
 			return $contentItem
 		})
 		return postItem
-		// <div class="card-img">
-		// 			<img src="${item.image}" alt="img">
-		// 		</div>
 
 
 

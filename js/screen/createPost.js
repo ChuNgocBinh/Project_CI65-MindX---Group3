@@ -1,33 +1,280 @@
-var editor;
-ClassicEditor
-    .create(document.querySelector('#editor'))
-    .then(newEditor => {
-        editor = newEditor;
-    })
-    .catch(error => {
-        console.error(error);
-    });
+import BaseComponent from "../components/BaseComponent.js";
+import inputWraper from "../components/inputWraper.js";
+import TextAreaWraper from "../components/textAreaWrapper.js";
+import setPosts from "../models/postFireBase.js";
 
-let btn = document.querySelector('.post-btn');
-btn.onclick = function () {
-    let data = editor.getData();
-    editor.setData("")
+export default class CreatePosts extends BaseComponent {
 
-    db.collection("Posts").add({
-        title: title.value,
-        subTitle: subTitle.value,
-        image: image.value,
-        textContent: data
-    })
-        .then((docRef) => {
-            console.log("Document written with ID: ", docRef.id);
-        })
-        .catch((error) => {
-            console.error("Error adding document: ", error);
+    constructor(props) {
+        super(props);
+        this.state = {
+            // lưu dữ liệu người dùng nhập vào
+            data: {
+                nameFood: '',
+                desciptionFood: '',
+                linkImgFood: '',
+                tutorialFood: '',
+                levelFood: '',
+                timeFood: '',
+                materialFood: '',
+                processFood: '',
+                skillFood: '',
+            },
+
+            // lưu thông tin về lỗi của các truờng thông tin
+            errors: {
+                nameFood: '',
+                desciptionFood: '',
+                linkImgFood: '',
+                tutorialFood: '',
+                levelFood: '',
+                timeFood: '',
+                materialFood: '',
+                processFood: '',
+                skillFood: '',
+            }
+        };
+    }
+
+    handleInputChange = (name, value) => {
+        let tmpState = this.state;
+        tmpState.data[name] = value.trim();
+        this.setState(tmpState)
+    }
+
+    render() {
+
+        let $title = document.createElement('h2');
+        $title.classList.add('title');
+        $title.innerHTML = 'Tạo món ăn mới'
+
+        let _nameFood = new inputWraper({
+            placeholder: 'Nhập tên món ăn',
+            type: 'text',
+            value: this.state.data.nameFood,
+            error: this.state.errors.nameFood,
+            onchange: (e)=>{
+                this.handleInputChange('nameFood',e.target.value)
+            }
         });
+
+        let _desciptionFood = new inputWraper({
+            placeholder: 'Nhập mô tả món ăn',
+            type: 'text',
+            value: this.state.data.desciptionFood,
+            error: this.state.errors.desciptionFood,
+            onchange: (e)=>{
+                this.handleInputChange('desciptionFood',e.target.value)
+            }
+        });
+
+        let _linkImgFood = new inputWraper({
+            placeholder: 'Nhập đường dẫn ảnh minh họa món ăn',
+            type: 'text',
+            value: this.state.data.linkImgFood,
+            error: this.state.errors.linkImgFood,
+            onchange: (e)=>{
+                this.handleInputChange('linkImgFood',e.target.value)
+            }
+        });
+
+        let _tutorialFood = new inputWraper({
+            placeholder: 'Nhập đường dẫn video hướng dẫn món ăn',
+            type: 'text',
+            value: this.state.data.tutorialFood,
+            error: this.state.errors.tutorialFood,
+            onchange: (e)=>{
+                this.handleInputChange('tutorialFood',e.target.value)
+            }
+        });
+
+        let _levelFood = new inputWraper({
+            placeholder: 'Nhập mức độ khó món ăn',
+            type: 'text',
+            value: this.state.data.levelFood,
+            error: this.state.errors.levelFood,
+            onchange: (e)=>{
+                this.handleInputChange('levelFood',e.target.value)
+            }
+        });
+
+        let _timeFood = new inputWraper({
+            placeholder: 'Nhập thời gian thực hiện món ăn',
+            type: 'text',
+            value: this.state.data.timeFood,
+            error: this.state.errors.timeFood,
+            onchange: (e)=>{
+                this.handleInputChange('timeFood',e.target.value)
+            }
+        });
+
+        let _materialFood = new TextAreaWraper({
+            placeholder: 'Nhập nguyên liệu thực hiện món ăn',
+            value: this.state.data.materialFood,
+            error: this.state.errors.materialFood,
+            onchange: (e)=>{
+                this.handleInputChange('materialFood',e.target.value)
+            }
+        });
+
+        let _processlFood = new TextAreaWraper({
+            placeholder: 'Nhập cách sơ chế món ăn',
+            value: this.state.data.processFood,
+            error: this.state.errors.processFood,
+            onchange: (e)=>{
+                this.handleInputChange('processFood',e.target.value)
+            }
+        });
+
+        let _skillFood = new TextAreaWraper({
+            placeholder: 'Nhập cách chế biến món ăn',
+            value: this.state.data.skillFood,
+            error: this.state.errors.skillFood,
+            onchange: (e)=>{
+                this.handleInputChange('skillFood',e.target.value)
+            }
+        });
+
+        let $btnSubmit = document.createElement('button');
+        $btnSubmit.classList.add('btn');
+        $btnSubmit.innerHTML = 'Tạo bài viết';
+
+        let $form = document.createElement('form');
+        $form.classList.add('create__post');
+        $form.onsubmit = this.handleValid;
+
+        $form.append(
+            $title,
+            _nameFood.render(),
+            _desciptionFood.render(),
+            _linkImgFood.render(),
+            _tutorialFood.render(),
+            _levelFood.render(),
+            _timeFood.render(),
+            _materialFood.render(),
+            _processlFood.render(),
+            _skillFood.render(),
+            $btnSubmit,
+        )
+
+        return $form
+    }
+
+    handleValid = (e) => {
+        e.preventDefault();
+        let data = this.state.data;
+        let errors = this.state.errors;
+
+        let isPassed = true;
+
+        if (data.nameFood == '') {
+            errors.nameFood = 'Vui lòng nhập tên món ăn';
+            isPassed = false;
+        }
+
+        if (data.desciptionFood == '') {
+            errors.desciptionFood = 'Vui lòng nhập mô tả món ăn';
+            isPassed = false;
+        }
+
+        if (data.linkImgFood == '') {
+            errors.linkImgFood = 'Vui lòng nhập đường dẫn ảnh minh họa món ăn';
+            isPassed = false;
+        }
+
+        if (data.tutorialFood == '') {
+            errors.tutorialFood = 'Vui lòng nhập đường dẫn video hướng dẫn món ăn';
+            isPassed = false;
+        }
+
+        if (data.levelFood == '') {
+            errors.levelFood = 'Vui lòng nhập độ khó món ăn';
+            isPassed = false;
+        }
+
+        if (data.timeFood == '') {
+            errors.timeFood = 'Vui lòng nhập thời gian thực hiện món ăn';
+            isPassed = false;
+        }
+
+        if (data.materialFood == '') {
+            errors.materialFood = 'Vui lòng nhập nguyên liệu thực hiện món ăn';
+            isPassed = false;
+        }
+
+        if (data.processFood == '') {
+            errors.processFood = 'Vui lòng nhập cách sơ chế món ăn';
+            isPassed = false;
+        }
+
+        if (data.skillFood == '') {
+            errors.skillFood = 'Vui lòng nhập cách chế biến món ăn';
+            isPassed = false;
+        }
+        console.log(isPassed)
         
-        // window.location.href = './listPosts.html'
+        let tmpState = this.state;
+        tmpState.errors = errors
+        this.setState(tmpState)
+
+        if(isPassed){
+            setPosts(this.state.data)
+        }
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var editor;
+// ClassicEditor
+//     .create(document.querySelector('#editor'))
+//     .then(newEditor => {
+//         editor = newEditor;
+//     })
+//     .catch(error => {
+//         console.error(error);
+//     });
+
+// let btn = document.querySelector('.post-btn');
+// btn.onclick = function () {
+//     let data = editor.getData();
+//     editor.setData("")
+
+//     db.collection("Posts").add({
+//         title: title.value,
+//         subTitle: subTitle.value,
+//         image: image.value,
+//         textContent: data
+//     })
+//         .then((docRef) => {
+//             console.log("Document written with ID: ", docRef.id);
+//         })
+//         .catch((error) => {
+//             console.error("Error adding document: ", error);
+//         });
+
+//     // window.location.href = './listPosts.html'
+// }
 
 
 

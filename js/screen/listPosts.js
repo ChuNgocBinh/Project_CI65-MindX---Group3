@@ -35,13 +35,15 @@ db.collection("Posts").get().then((querySnapshot) => {
 	})
 	console.log(postItem)
 	let master = document.querySelector('.master');
-	master.append(...postItem)
-	let titlePost = document.querySelector('.title-post')
-	let subtitlePost = document.querySelector('.subTitle-post')
-	let content = document.querySelector('.content-post')
+	master.append(...postItem);
+
+	let titlePost = document.querySelector('.title-post');
+	let subtitlePost = document.querySelector('.subTitle-post');
+	let content = document.querySelector('.content-post');
 	let details = document.querySelectorAll('.details');
 	let para = document.querySelector('.para');
 	let btnClose = document.querySelector('.btn-close');
+	let btnFix = document.querySelector('.btn-fix');
 
 	Array.from(details).forEach((item, index) => {
 		item.addEventListener('click', function (e) {
@@ -52,10 +54,12 @@ db.collection("Posts").get().then((querySnapshot) => {
 			subtitlePost.innerHTML = myArr[index].subTitle;
 			content.innerHTML = myArr[index].textContent;
 		})
-		btnClose.onclick =function(){
+		btnClose.onclick = function () {
 			para.classList.add('para-hiden');
 			master.classList.remove('para-hiden');
-		}	
+		}
+
+		
 	})
 
 

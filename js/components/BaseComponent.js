@@ -11,7 +11,11 @@ export default class BaseComponent {
      * 
      * @returns {HTMLElement}
      */
-    render() {
+     render() {
+
+    }
+
+    afterRender() {
 
     }
 
@@ -21,6 +25,17 @@ export default class BaseComponent {
      */
     setState(newState) {
         this.state = newState;
-        this.render();
+        this.refresh();
+    }
+
+    refresh() {
+        let $element = this.render();
+
+        if(this.$element) {
+            this.$element.replaceWith($element);
+        }
+        this.$element = $element;
+        this.afterRender();
+        return this.$element;
     }
 }

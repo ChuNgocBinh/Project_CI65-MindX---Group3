@@ -3,7 +3,7 @@ export async function register(name, email, password) {
         await auth.createUserWithEmailAndPassword(email, password); // xảy ra hiện tượng bất đồng bộ
         await auth.currentUser.updateProfile({displayName: `${name}`});
         alert('đăng ký thành công');
-        window.location.reload()
+        window.location.reload();
     } catch (error) {
         alert(error.message)
     }
@@ -20,10 +20,11 @@ export async function login(email, password) {
     }
 }
 
-export  async function getCurrentUser(name) {
-    const user = await firebase.auth().currentUser;
+export  async function getCurrentUser() {
+    const user = await auth.currentUser;
     if (user !== null) {
-       name = user.displayName;
+       let name = user.displayName;
+        return name
     }
 }
 

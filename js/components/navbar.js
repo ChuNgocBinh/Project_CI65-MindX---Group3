@@ -16,14 +16,14 @@ export default class Navbar extends BaseComponent {
 						<li class="nav-item link-active"><a href="./home.html">Trang chủ</a></li>
 						<li class="nav-item dropdown"><a href="#">Công thức <i class="fas fa-angle-down"></i></a>
 							<ul class="sub-nav">
-								<li><a href="./createPost.html">Tạo món ăn</a></li>
-								<li><a href="./listPosts.html">Các món ăn đã thêm</a></li>
-								<li><a href="./allRecipes.html">Danh sách món ăn</a></li>
+								<li class ="sub-nav-item"><a href="./createPost.html">Tạo món ăn</a></li>
+								<li class ="sub-nav-item"><a href="./listPosts.html">Các món ăn đã thêm</a></li>
+								<li class ="sub-nav-item"><a href="./allRecipes.html">Danh sách món ăn</a></li>
 							</ul>
 						</li>
 						<li class="nav-item"><a href="#">Món ăn ưa thích</a></li>
 						<li class="nav-item"><a href="#">Giới thiệu</a></li>
-						<li class="nav-item"><a href="#">Liên hệ</a></li>
+						<li class="nav-item"><a href="./allRecipes.html">Liên hệ</a></li>
 					</ul>
 				</div>
 				<div class="nav-search">
@@ -39,21 +39,22 @@ export default class Navbar extends BaseComponent {
 		return nav
 	}
 
-	handleNameUser() {
-		let NameLogin = document.querySelector('.link-login').innerHTML;
-		console.log(getCurrentUser(NameLogin))
+	async handleNameUser() {
+		let nameUser = await getCurrentUser();
+		let nameDisplay = document.querySelector('.link-login') ;
+		nameDisplay.innerHTML = nameUser
 	}
 
 	handleClickNav() {
 		let navLink = document.querySelectorAll('.nav-item');
-		console.log(navLink)
 		Array.from(navLink).forEach(nav => {
-			nav.onclick = function () {
+			nav.onclick = function (e) {
+				// e.preventDefault();
 				let linkActive = document.querySelector('.nav-item.link-active');
 				nav.classList.add('link-active');
-				linkActive.classList.remove('link-active')
+				linkActive.classList.remove('link-active');
 			}
-		})
+		});
 	}
 }
 

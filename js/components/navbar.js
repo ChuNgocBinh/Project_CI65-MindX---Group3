@@ -87,6 +87,7 @@ export default class Navbar extends BaseComponent {
 				let nameDisplay = await auth.currentUser.displayName
 				if (nameDisplay !== null) {
 					$linkLogin.innerHTML = nameDisplay;
+					console.log("wooooooooooooooooooooooo")
 				}
 				} else {
 				// User is signed out

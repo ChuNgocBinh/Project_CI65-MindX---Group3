@@ -64,7 +64,8 @@ export default class Navbar extends BaseComponent {
 						`
 		let $linkLogin = document.createElement('div');
 		$linkLogin.classList.add('link-login');
-		$linkLogin.innerHTML = this.handleNameUser()
+		$linkLogin.innerHTML = "Guest";
+		this.handleNameUser($linkLogin);
 
 		let $navSearch = document.createElement('div');
 		$navSearch.classList.add('nav-search');
@@ -73,15 +74,25 @@ export default class Navbar extends BaseComponent {
 		let $nav = document.createElement('div');
 		$nav.classList.add('navbar');
 		$nav.append($logo,$navLink,$navSearch)
+		
 
 		return $nav
 	}
 
-	handleNameUser = async () => {
-		let nameDisplay = await auth.currentUser.displayName
-		if (nameDisplay !== null) {
-			return nameDisplay
-		}
+	async handleNameUser($linkLogin) {
+		firebase.auth().onAuthStateChanged(async(user) => {
+			if (user) {
+			  // User is signed in, see docs for a list of available properties
+			  // https://firebase.google.com/docs/reference/js/firebase.User
+				let nameDisplay = await auth.currentUser.displayName
+				if (nameDisplay !== null) {
+					$linkLogin.innerHTML = nameDisplay;
+				}
+				} else {
+				// User is signed out
+					$linkLogin.innerHTML = "Guest";
+				}
+		  });
 	}
 
 	handleClickNav() {

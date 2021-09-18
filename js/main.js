@@ -7,8 +7,8 @@ import CreatePosts from "./screen/createPost.js";
 let _navbar = new Navbar();
 let $navbar = document.querySelector('.header');
 $navbar.append(_navbar.render());
-_navbar.handleClickNav();
-_navbar.handleNameUser();
+// _navbar.handleClickNav();
+// _navbar.handleNameUser;
 
 
 

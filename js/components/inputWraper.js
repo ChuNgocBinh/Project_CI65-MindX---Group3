@@ -13,6 +13,9 @@ export default class inputWraper extends BaseComponent {
         $input.placeholder = this.props.placeholder;
         $input.type = this.props.type;
         $input.value = this.props.value;
+        if ($input.type == 'file') {
+            $input.accept = 'image/*'
+        }
         $input.onchange = this.props.onchange;
 
         let $error = document.createElement('div');

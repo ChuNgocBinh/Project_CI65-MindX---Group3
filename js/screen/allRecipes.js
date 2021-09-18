@@ -7,7 +7,7 @@ export default class Recipes extends BaseComponent {
 	}
 
 	async render() {
-		await db.collection("Posts").get().then((querySnapshot) => {
+		await db.collection("Post").get().then((querySnapshot) => {
 			querySnapshot.forEach((doc) => {
 				this.state.push(doc.data());
 			});
@@ -36,12 +36,12 @@ export default class Recipes extends BaseComponent {
 			$contentItem.classList.add('card');
             $contentItem.innerHTML = `
 				<div class="card-img">
-					<img src="${item.image}" alt="img">
+					<img src="${item.linkImgFood}" alt="img">
 			 	</div>
 				<div class="card-content">
 					<div class="card-info">
-						<h3>${item.title}</h3>
-						<p>${item.subTitle}</p>
+						<h3>${item.nameFood}</h3>
+						<p>${item.descriptionFood}</p>
 					</div>
 					<div class="item-comment">
 						<label for="like" class="item"><i class="far fa-heart"></i> <span class="number-like">0</span></label>

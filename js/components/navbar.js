@@ -4,37 +4,6 @@ export default class Navbar extends BaseComponent {
 		super(props);
 	}
 	render() {
-		
-		// $nav.innerHTML = `
-        //         <div class="logo-img">
-		// 			<img src="./img/Image-1-Copy-1024x629.png" alt="logo">
-		// 		</div>
-		// 		<div class="nav-link">
-		// 			<ul class="nav">
-		// 				<li class="nav-item link-active"><a href="./home.html">Trang chủ</a></li>
-		// 				<li class="nav-item dropdown"><a href="#">Công thức <i class="fas fa-angle-down"></i></a>
-		// 					<ul class="sub-nav">
-		// 						<li class ="sub-nav-item"><a href="./createPost.html">Tạo món ăn</a></li>
-		// 						<li class ="sub-nav-item"><a href="./listPosts.html">Các món ăn đã thêm</a></li>
-		// 						<li class ="sub-nav-item"><a href="./allRecipes.html">Danh sách món ăn</a></li>
-		// 					</ul>
-		// 				</li>
-		// 				<li class="nav-item"><a href="#">Món ăn ưa thích</a></li>
-		// 				<li class="nav-item"><a href="#">Giới thiệu</a></li>
-		// 				<li class="nav-item"><a href="./allRecipes.html">Liên hệ</a></li>
-		// 			</ul>
-		// 		</div>
-		// 		<div class="nav-search">
-		// 			<div class="input-search">
-		// 				<input type="search" placeholder="Search..." id="search">
-		// 				<button class="btn-search"><i class="fas fa-search"></i></button>
-		// 			</div>
-		// 			<div class="link-login">
-		// 				<a href="./signIn.html">Đăng nhập</a>
-		// 			</div>
-		// 		</div>
-        //         `
-
 		let $logo = document.createElement('div');
 		$logo.classList.add('logo-img');
 		$logo.innerHTML = `<img src="./img/Image-1-Copy-1024x629.png" alt="logo">`
@@ -64,36 +33,53 @@ export default class Navbar extends BaseComponent {
 						`
 		let $linkLogin = document.createElement('div');
 		$linkLogin.classList.add('link-login');
-		$linkLogin.innerHTML = "Guest";
+		// $linkLogin.innerHTML = "Đăng nhập";
 		this.handleNameUser($linkLogin);
 
 		let $navSearch = document.createElement('div');
 		$navSearch.classList.add('nav-search');
 		$navSearch.append($inputSearch, $linkLogin)
-		
+
 		let $nav = document.createElement('div');
 		$nav.classList.add('navbar');
-		$nav.append($logo,$navLink,$navSearch)
-		
+		$nav.append($logo, $navLink, $navSearch)
+
 
 		return $nav
 	}
 
 	async handleNameUser($linkLogin) {
-		firebase.auth().onAuthStateChanged(async(user) => {
+		firebase.auth().onAuthStateChanged(async (user) => {
 			if (user) {
-			  // User is signed in, see docs for a list of available properties
-			  // https://firebase.google.com/docs/reference/js/firebase.User
+				// User is signed in, see docs for a list of available properties
+				// https://firebase.google.com/docs/reference/js/firebase.User
 				let nameDisplay = await auth.currentUser.displayName
 				if (nameDisplay !== null) {
-					$linkLogin.innerHTML = nameDisplay;
-					console.log("wooooooooooooooooooooooo")
+					let $nameUser = document.createElement('div');
+					$nameUser.classList.add('nameUser');
+					$nameUser.innerHTML = `${nameDisplay} <i class="fas fa-angle-down"></i>`
+
+					let $logOutUser = document.createElement('div');
+					$logOutUser.className = 'logOutUser logout-hiden';
+
+					let $linkProfile = document.createElement('a');
+					$linkProfile.href = '#';
+					$linkProfile.innerHTML = 'Profile';
+
+					let $linkLogOut = document.createElement('a');
+					$linkLogOut.href = '#';
+					$linkLogOut.innerHTML = 'Đăng xuất';
+					$linkLogOut.onclick = this.handleClickLogOut
+
+					$logOutUser.append($linkProfile, $linkLogOut)
+
+					$linkLogin.append($nameUser, $logOutUser)
 				}
-				} else {
+			} else {
 				// User is signed out
-					$linkLogin.innerHTML = "Guest";
-				}
-		  });
+				$linkLogin.innerHTML = `<a href="./signIn.html">Đăng nhập</a>`;
+			}
+		});
 	}
 
 	handleClickNav() {
@@ -106,6 +92,12 @@ export default class Navbar extends BaseComponent {
 				linkActive.classList.remove('link-active');
 			}
 		});
+	}
+
+	handleClickLogOut = async (e) => {
+		e.preventDefault();
+		await auth.signOut()
+		window.location.href = './signIn.html'
 	}
 }
 

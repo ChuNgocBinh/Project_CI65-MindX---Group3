@@ -103,11 +103,41 @@
 .nav-search{
     flex: 1;
     display: flex;
-    align-items: center;    
+    align-items: center;
 }
 
 .nav-search .link-login{
-    color: white;   
+    color: white;  
+    font-weight: 600; 
+    position: relative;
+}
+
+.link-login .nameUser{
+    padding: 20px;
+}
+
+.link-login .logOutUser{
+    position: absolute;
+    background-color: black;
+    right: 0;
+}
+
+.logOutUser > a{
+    display: block;
+    padding: 10px 20px;
+}
+
+.logOutUser > a:hover{
+    background-color: var(--color-orange);
+    display: block;
+}
+
+.link-login:hover .logout-hiden{
+    display: block;
+}
+
+.logout-hiden{
+    display: none;
 }
 
 .input-search {
@@ -128,6 +158,8 @@
     border: none;
     color: white;
 }
+
+
 
 
 

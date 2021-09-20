@@ -5,6 +5,7 @@ body {
     display: grid;
     grid-template-columns: auto auto auto auto;
     padding: 2vw;
+    justify-content: space-evenly;
 }
 .card{
     width: 20vw;
@@ -15,14 +16,15 @@ body {
     background-color: aliceblue;
     transition: 0.5s;
     padding: 1vh;
+    overflow: hidden;
 }
 .card:hover{
     background-color: gray;
     cursor: pointer;
 }
 .card_img, .card_content{
-    height:25vh;
-    width: 20vw;
+    max-height:25vh;
+    max-width: 20vw;
 }
 .card_content{
     display: flex;

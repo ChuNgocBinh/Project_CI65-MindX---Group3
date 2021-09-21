@@ -269,6 +269,8 @@ export default class CreatePosts extends BaseComponent {
 
         if(isPassed){
             setPosts(this.state.data)
+            // window.location.href = "./home.html"
+
         }
     }
 

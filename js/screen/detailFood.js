@@ -53,8 +53,12 @@ export default class DetailFood extends BaseComponent {
 
             let $tutorialFood = document.createElement('div');
             $tutorialFood.classList.add('tutorialFood');
-            // $tutorialFood.innerHTML = `<iframe width="916" height="515" src=${item.tutorialFood} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-            $tutorialFood.innerHTML = `<iframe width="916" height="515" src="https://www.youtube.com/embed/d44UTUSTYKU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            let link = [item.tutorialFood];
+            let linkVideo = link[0].split("");
+            let linkVideoSlice = linkVideo.slice(32, 45);
+            let myLink = linkVideoSlice.join("")
+            console.log(myLink)
+            $tutorialFood.innerHTML = `<iframe width="916" height="515" src="https://www.youtube.com/embed/${myLink}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
 
             let $author = document.createElement('p');
             $author.classList.add('author');
@@ -85,3 +89,4 @@ export default class DetailFood extends BaseComponent {
         return foodItem
     }
 }
+

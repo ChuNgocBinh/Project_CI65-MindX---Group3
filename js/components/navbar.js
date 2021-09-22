@@ -1,4 +1,5 @@
 import BaseComponent from "./BaseComponent.js";
+import search from "../models/search.js";
 export default class Navbar extends BaseComponent {
 	constructor(props) {
 		super(props);
@@ -27,10 +28,30 @@ export default class Navbar extends BaseComponent {
 				`
 		let $inputSearch = document.createElement('div');
 		$inputSearch.classList.add('input-search');
-		$inputSearch.innerHTML = `
-						<input type="search" placeholder="Search..." id="search">
-						<button class="btn-search"><i class="fas fa-search"></i></button>
-						`
+		let $search = document.createElement('input');
+		$search.type="search";
+		$search.placeholder="Search..."
+		$search.id = "search";
+		$search.addEventListener("keyup", function(e){
+			if (e.key === "Enter"){
+				if (! window.location.href.endsWith("allRecipes.html")) {
+					window.location.href = "./allRecipes.html";
+				}
+				search($search.value)
+			}
+		});
+		let $btnSearch = document.createElement('button');
+		$btnSearch.class="btn-search";
+		$btnSearch.addEventListener("click", function(){
+			if (! window.location.href.endsWith("allRecipes.html")) {
+				window.location.href = "./allRecipes.html";
+			}
+			search($search.value)
+		});
+		$btnSearch.innerHTML = `
+			<i class="fas fa-search"></i>
+			`
+		$inputSearch.append($search, $btnSearch);
 		let $linkLogin = document.createElement('div');
 		$linkLogin.classList.add('link-login');
 		// $linkLogin.innerHTML = "Đăng nhập";

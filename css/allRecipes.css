@@ -9,28 +9,41 @@ body {
 }
 .card{
     width: 20vw;
+    /* height: 50vh; */
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 2vh;
-    background-color: aliceblue;
+    background-color:whitesmoke;
     transition: 0.5s;
-    padding: 1vh;
+    padding: 2vh;
     overflow: hidden;
 }
 .card:hover{
-    background-color: gray;
+    background-color: black;
+    color: white;
     cursor: pointer;
+    box-shadow: 6px 6px var(--color-orange);
 }
-.card_img, .card_content{
-    max-height:25vh;
-    max-width: 20vw;
+.card-img, .card-content{
+    height:25vh;
+    width: 20vw;
 }
-.card_content{
+.card-content{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    margin-left: 2vh;
 }
-.card-comment{
-    position: absolute;
-    bottom: 0%;
+.card-description{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.card-info{
+    min-width: 0;
+    width: 20vw;
+    max-width: 100%;
 }

@@ -114,15 +114,15 @@ export default class CreatePosts extends BaseComponent {
                     break;
                 }
                 }, 
-                () => {
+                async () => {
                 // Upload completed successfully, now we can get the download URL
                 console.log('Upload completed successfully');
-                }
-                );
                 var imgURL = await uploadTask.snapshot.ref.getDownloadURL();
                 console.log('File available at', imgURL);
                 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 this.handleInputChange('linkImgFood',imgURL);
+                }
+                );
             }
         });
 

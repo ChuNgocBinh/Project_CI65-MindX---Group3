@@ -50,3 +50,12 @@ body {
 .hidden{
     display: none;
 }
+.search-container{
+    padding-top: 2vw;
+    display: flex;
+    justify-content: center;
+}
+#searchAYT {
+    height: 10vh;
+    width:80vw;
+}

@@ -68,6 +68,38 @@ export default class DetailFood extends BaseComponent {
             $dateModifier.classList.add('dateModifier');
             $dateModifier.innerHTML = '<b>Ngày viết: </b> ' + item.dateModifier;
 
+            let $hr = document.createElement('hr');
+
+            let $titleComment = document.createElement('h3');
+            $titleComment.innerHTML = 'Bình Luận';
+
+            let commentArray = item.comment.map(contentItem => {
+                let $userComment = document.createElement('div');
+                $userComment.classList.add('userComment')
+                let $nameCommentUser = document.createElement('h4');
+                $nameCommentUser.classList.add('nameCommentUser');
+                $nameCommentUser.innerHTML = contentItem.name;
+                let $contentCommentUser = document.createElement('p');
+                $contentCommentUser.classList.add('contentCommentUser');
+                $contentCommentUser.innerHTML = contentItem.commentUser;
+                let $hrComment = document.createElement('hr');
+
+
+                $userComment.append($nameCommentUser, $contentCommentUser,$hrComment)
+                return $userComment
+            })
+
+
+            let $inputComment = document.createElement('input');
+            $inputComment.classList.add('inputComment');
+            $inputComment.placeholder = 'Viết bình luận'
+
+            let $btnComment = document.createElement('button');
+            $btnComment.classList.add('btn-comment');
+            $btnComment.innerHTML = 'Bình luận'
+            $btnComment.onclick = this.handleComment;
+
+
             let $main = document.createElement('div');
             $main.classList.add('main')
             $main.append(
@@ -81,12 +113,35 @@ export default class DetailFood extends BaseComponent {
                 $skillFood,
                 $tutorialFood,
                 $author,
-                $dateModifier
+                $dateModifier,
+                $hr,
+                $titleComment,
+                ...commentArray,
+                $inputComment,
+                $btnComment
             )
             return $main
 
         })
         return foodItem
     }
-}
 
+    handleComment = async () => {
+        let idFoodJson = localStorage.getItem('idFood');
+        let idFood = JSON.parse(idFoodJson);
+        let nameUser = await auth.currentUser.displayName;
+        let content = document.querySelector('.inputComment').value;
+        let postId = await db.collection('Post').doc(idFood);
+
+        let postIdUpdate = await postId.update({
+            comment: firebase.firestore.FieldValue.arrayUnion({
+                name: nameUser,
+                commentUser: content
+            })
+        });
+
+        content = "",
+            // this.render()
+            window.location.reload()
+    }
+}

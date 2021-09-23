@@ -10,6 +10,7 @@ export default async function setPosts(data) {
         let date = new Date();
         data.author = displayName;
         data.dateModifier = date.toISOString();
+        data.comment = [];
         await db.collection('Post').add(data);
         await db.collection(`${displayName}`).add(data);
         alert('da them thanh cong')

@@ -6,6 +6,10 @@
     /* font-size: 15px; */
 }
 
+:root{
+    --color-orange:rgba(255, 68, 0);
+}
+
 .container{
     position: absolute;
     top: 70px;
@@ -41,3 +45,50 @@
     width: 400px;
     margin-bottom: 10px;
 }
+
+.main > h3{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    /* border-bottom: 1px black solid; */
+}
+
+.main .userComment{
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+.userComment >p{
+    margin-bottom: 5px;
+}
+
+.main .inputComment{
+    width: 100%;
+    outline: none;
+    height: auto;
+    margin: 20px 0;
+    padding: 5px;
+    border: none;
+    border-bottom: 1px #ccc solid;
+    font-size: 15px;
+}
+
+.main .btn-comment{
+    display: block;
+    width: 100px;
+    height: 30px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    font-size: 15px;
+    background-color: white;
+    cursor: pointer;
+    border: 1px #ccc solid;
+    margin-right: 0;    
+}
+
+
+.main .btn-comment:hover{
+    background-color: var(--color-orange);
+    color: white;
+}
+
+

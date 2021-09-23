@@ -7,6 +7,10 @@ export default class ListPostsUser extends BaseComponent {
 	}
 
 	render = async () => {
+		// let nameDisplay = await auth.currentUser.displayName;
+
+
+
 		let arr = [];
 		await db.collection('Post').get().then((querySnapshot) => {
 			querySnapshot.forEach((doc) => {

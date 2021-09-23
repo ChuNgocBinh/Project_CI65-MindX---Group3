@@ -1,4 +1,5 @@
 import BaseComponent from "../components/BaseComponent.js";
+import { search } from "../models/search.js";
 
 export default class Recipes extends BaseComponent {
 	constructor(props) {
@@ -14,6 +15,14 @@ export default class Recipes extends BaseComponent {
 				arr.push(doc.id);
 			});
 		})
+		let $search = document.createElement('input');
+		$search.type="search";
+		$search.placeholder="Search..."
+		$search.id = "searchAYT";
+		$search.addEventListener("keyup", function(e){
+				search($search.value)
+		});
+		document.querySelector(".container .search-container").appendChild($search);
 		let postItem = this.state.map((item, index) => {
 			// let $contentItem = document.createElement('div');
 			// $contentItem.classList.add('content__items');

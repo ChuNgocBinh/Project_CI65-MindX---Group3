@@ -10,9 +10,10 @@ export function search(keyword) {
 
 export function searchOnPage() {
     console.log("searching on page")
-    let keyword = localStorage.getItem("searchKeyword").toLowerCase();
-    console.log("keyword: "+keyword);
+    let keyword = localStorage.getItem("searchKeyword");
+    console.log("keyword: " + keyword);
     if (!(keyword == "" || keyword === null)){
+        keyword = keyword.toLowerCase()
         let targets = document.getElementsByClassName("searchTarget");
         for(let target of targets) {
             let title = target.querySelector(".card-info h3").innerHTML.toLowerCase();
@@ -25,5 +26,6 @@ export function searchOnPage() {
                 target.classList.add("hidden");
             }
         }
+        localStorage.removeItem("searchKeyword");
     }
 }

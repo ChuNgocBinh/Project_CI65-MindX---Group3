@@ -84,8 +84,7 @@ export default class DetailFood extends BaseComponent {
                 $contentCommentUser.innerHTML = contentItem.commentUser;
                 let $hrComment = document.createElement('hr');
 
-
-                $userComment.append($nameCommentUser, $contentCommentUser,$hrComment)
+                $userComment.append($nameCommentUser, $contentCommentUser, $hrComment)
                 return $userComment
             })
 
@@ -127,21 +126,31 @@ export default class DetailFood extends BaseComponent {
     }
 
     handleComment = async () => {
-        let idFoodJson = localStorage.getItem('idFood');
-        let idFood = JSON.parse(idFoodJson);
-        let nameUser = await auth.currentUser.displayName;
-        let content = document.querySelector('.inputComment').value;
-        let postId = await db.collection('Post').doc(idFood);
 
-        let postIdUpdate = await postId.update({
-            comment: firebase.firestore.FieldValue.arrayUnion({
-                name: nameUser,
-                commentUser: content
-            })
-        });
+        let user = await auth.currentUser;
+        console.log(user)
+        if (user == null) {
+            alert('Bạn chưa đăng nhập tài khoản của mình')
+        } else {
+            let idFoodJson = localStorage.getItem('idFood');
+            let idFood = JSON.parse(idFoodJson);
+            let nameUser = await auth.currentUser.displayName;
+            let content = document.querySelector('.inputComment').value;
+            let postId = await db.collection('Post').doc(idFood);
 
-        content = "",
-            // this.render()
-            window.location.reload()
+            let postIdUpdate = await postId.update({
+                comment: firebase.firestore.FieldValue.arrayUnion({
+                    name: nameUser,
+                    commentUser: content
+                })
+            });
+
+            content = "",
+                // this.render()
+                window.location.reload()
+
+        }
+
+
     }
 }

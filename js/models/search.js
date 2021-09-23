@@ -18,7 +18,10 @@ export function searchOnPage() {
             let title = target.querySelector(".card-info h3").innerHTML.toLowerCase();
             let author = target.querySelector(".card-comment p").innerHTML.toLowerCase();
             console.log(title.includes(keyword), author.includes(keyword));
-            if (!(title.includes(keyword)|| author.includes(keyword))) {
+            if (title.includes(keyword)|| author.includes(keyword)) {
+                target.classList.remove("hidden");
+            }
+            else {
                 target.classList.add("hidden");
             }
         }

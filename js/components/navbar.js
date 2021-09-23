@@ -1,5 +1,5 @@
 import BaseComponent from "./BaseComponent.js";
-import search from "../models/search.js";
+import {search} from "../models/search.js";
 export default class Navbar extends BaseComponent {
 	constructor(props) {
 		super(props);
@@ -34,18 +34,12 @@ export default class Navbar extends BaseComponent {
 		$search.id = "search";
 		$search.addEventListener("keyup", function(e){
 			if (e.key === "Enter"){
-				if (! window.location.href.endsWith("allRecipes.html")) {
-					window.location.href = "./allRecipes.html";
-				}
 				search($search.value)
 			}
 		});
 		let $btnSearch = document.createElement('button');
 		$btnSearch.class="btn-search";
 		$btnSearch.addEventListener("click", function(){
-			if (! window.location.href.endsWith("allRecipes.html")) {
-				window.location.href = "./allRecipes.html";
-			}
 			search($search.value)
 		});
 		$btnSearch.innerHTML = `

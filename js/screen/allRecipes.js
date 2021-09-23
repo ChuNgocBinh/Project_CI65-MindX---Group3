@@ -49,8 +49,10 @@ export default class Recipes extends BaseComponent {
 						<h3>${item.nameFood}</h3>
 						<div class="card-description">${item.desciptionFood}</div>
 					</div>
-					<div class="item-comment">
+					<div class="card-comment">
 						<p>Người viết: ${item.author}</p>
+						<label for="like" class="item"><i class="far fa-heart"></i> <span class="number-like">0</span></label>
+						<input type="checkbox" id="like" class="item">
 						<span id="comment" class="item"><i class="fas fa-comments"></i><span class="number-like">0</span></span>
 						<span id="view" class="item"><i class="fas fa-eye"></i><span class="number-like">0</span></span>
 					</div>

@@ -128,15 +128,17 @@ export default class DetailFood extends BaseComponent {
     handleComment = async () => {
 
         let user = await auth.currentUser;
+        let content = document.querySelector('.inputComment').value;
         console.log(user)
         if (user == null) {
-            alert('Bạn chưa đăng nhập tài khoản của mình')
+            alert('Bạn chưa đăng nhập tài khoản của mình');
+        } else if (content == "") {
+            alert('Bạn phải nhập nội dung bình luận');
         } else {
             let idFoodJson = localStorage.getItem('idFood');
             let idFood = JSON.parse(idFoodJson);
             let nameUser = await auth.currentUser.displayName;
-            let content = document.querySelector('.inputComment').value;
-            let postId = await db.collection('Post').doc(idFood);
+            let postId = await db.collection('Post').doc(idFood); 
 
             let postIdUpdate = await postId.update({
                 comment: firebase.firestore.FieldValue.arrayUnion({
@@ -145,6 +147,7 @@ export default class DetailFood extends BaseComponent {
                 })
             });
 
+            
             content = "",
                 // this.render()
                 window.location.reload()

@@ -11,9 +11,15 @@ export default async function setPosts(data) {
         data.author = displayName;
         data.dateModifier = date.toISOString();
         data.comment = [];
+        data.interact = {
+            numberLike: 0,
+            numberComment:0,
+            numberView:0
+        }
         await db.collection('Post').add(data);
         await db.collection(`${displayName}`).add(data);
-        alert('da them thanh cong')
+        alert('Tạo mới thành công')
+        window.location.href = './home.html'
     }
 }
 

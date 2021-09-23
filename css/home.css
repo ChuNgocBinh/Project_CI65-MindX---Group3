@@ -57,6 +57,7 @@
 .nav-link > ul{
     list-style-type: none;
     display: flex;
+    justify-content: center;
 }
 
 .nav-link a{
@@ -352,6 +353,10 @@
 
 .item-comment input{
     display: none;
+}
+
+.item-comment .checked{
+    color: red;
 }
 
 /* ---------------------footer--------------- */

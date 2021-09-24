@@ -351,9 +351,9 @@
     cursor: pointer;
 }
 
-.item-comment input{
+/* .item-comment input{
     display: none;
-}
+} */
 
 .item-comment .checked{
     color: red;

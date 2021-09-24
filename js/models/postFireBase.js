@@ -23,6 +23,16 @@ export default async function setPosts(data) {
     }
 }
 
+// add một collection mới
+export async function addFavorite(collection,data){
+    await db.collection(collection).add(data)
+}
+
+// update một value mới
+
+export async function updateInteract(collection,doc,data){
+    await db.collection(`${collection}`).doc(doc).update(data)
+}
 
 
 // data.forEach(async (item) => {

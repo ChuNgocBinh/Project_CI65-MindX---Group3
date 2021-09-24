@@ -1,4 +1,5 @@
 import BaseComponent from "../components/BaseComponent.js";
+import { updateInteract } from "../models/postFireBase.js";
 
 export default class ListPostsUser extends BaseComponent {
 	constructor(props) {
@@ -6,19 +7,27 @@ export default class ListPostsUser extends BaseComponent {
 		this.state = [];
 	}
 
+
+
+
 	render = async () => {
-		// let nameDisplay = await auth.currentUser.displayName;
-
-
-
 		let arr = [];
+
+		//   await auth.onAuthStateChanged(async (user) => {
+		// 	if (user) {
+		// 		let nameDisplay = auth.currentUser.displayName;
+		// 	}
+		// })
 		await db.collection('Post').get().then((querySnapshot) => {
 			querySnapshot.forEach((doc) => {
 				this.state.push(doc.data())
 				arr.push(doc.id)
 			})
 		})
-		let postItem = this.state.map((item, index) => {
+		console.log(this.state)
+		console.log(arr)
+
+		let postItem = await this.state.map((item, index) => {
 			let $container = document.createElement('div');
 			$container.classList.add('content__items');
 
@@ -55,13 +64,15 @@ export default class ListPostsUser extends BaseComponent {
 				localStorage.setItem('idFood', JSON.stringify(arr[index]));
 
 				let numberView = item.interact.numberView;
-				await db.collection('Post').doc(arr[index]).update({
+				let collection = 'Post'
+				await updateInteract(collection, arr[index], {
 					interact: {
 						numberComment: item.interact.numberComment,
 						numberLike: item.interact.numberLike,
 						numberView: numberView += 1
 					}
-				});
+				})
+
 				window.location.href = './detail.html'
 			})
 
@@ -75,30 +86,29 @@ export default class ListPostsUser extends BaseComponent {
 
 			let $itemComment = document.createElement('div');
 			$itemComment.classList.add('item-comment');
-			let $lableLike = document.createElement('lable');
-			$lableLike.attributes.for = 'like';
+
+			let $lableLike = document.createElement('label');
 			$lableLike.classList.add('item');
 			$lableLike.innerHTML = `<i class="fas fa-thumbs-up"></i> <span class="number-like"> ${item.interact.numberLike}</span>`;
-			$lableLike.for = 'like'
 			$lableLike.onclick = async function () {
+				$lableLike.innerHTML = `<i class="fas fa-thumbs-up"></i> <span class="number-like"> ${item.interact.numberLike + 1}</span>`;
+
 				// if ($inputCheckLike.checked) {
-					$lableLike.classList.add('checked');
-					console.log('checked')
-					let numberLike = item.interact.numberLike;
-					await db.collection('Post').doc(arr[index]).update({
-						interact: {
-							numberComment: item.interact.numberComment,
-							numberLike: numberLike += 1,
-							numberView: item.interact.numberView
-						}
-					});
+				// 	$lableLike.classList.remove('checked');
+				// 	console.log('checked')
+				// 	let numberLike = item.interact.numberLike;
+				// 	let collection = 'Post'
+				// 	await updateInteract(collection, arr[index], {
+				// 		interact: {
+				// 			numberComment: item.interact.numberComment,
+				// 			numberLike: numberLike += 1,
+				// 			numberView: item.interact.numberView
+				// 		}
+				// 	})
+				// }else{
+				// 	$lableLike.classList.add('checked')
 				// }
 			}
-
-			let $inputCheckLike = document.createElement('input');
-			$inputCheckLike.type = 'checkbox';
-			$inputCheckLike.id = 'like';
-			$inputCheckLike.classList.add('item');
 
 
 			let $spanComment = document.createElement('span');
@@ -112,21 +122,6 @@ export default class ListPostsUser extends BaseComponent {
 			$spanView.innerHTML = `<i class="fas fa-eye"></i><span class="number-view"> ${item.interact.numberView}</span>`;
 
 			$itemComment.append($lableLike, $inputCheckLike, $spanComment, $spanView)
-
-			// $itemComment.innerHTML = `
-			// 	<label for="like" class="item"><i class="far fa-heart"></i> <span class="number-like">0</span></label>
-			// 	<input type="checkbox" id="like" class="item">
-			// 	<span id="comment" class="item"><i class="fas fa-comments"></i><span class="number-comment">0</span></span>
-			// 	<span id="view" class="item"><i class="fas fa-eye"></i><span class="number-like">0</span></span>`
-
-
-
-
-
-
-
-
-
 
 			$paraItems.append($itemInfo, $itemComment);
 

@@ -1,4 +1,5 @@
 import BaseComponent from "../components/BaseComponent.js";
+import { updateInteract } from "../models/postFireBase.js";
 
 export default class FavoriteFood extends BaseComponent {
     constructor(props) {
@@ -7,9 +8,13 @@ export default class FavoriteFood extends BaseComponent {
     }
 
     render = async () => {
+		let arr = [];
+
         await db.collection('Post').get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 this.state.push(doc.data())
+				arr.push(doc.id)
+
             })
         })
         console.log(this.state)

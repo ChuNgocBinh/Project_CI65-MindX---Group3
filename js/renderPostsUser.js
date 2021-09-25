@@ -1,5 +1,5 @@
-import ListPostsUser from "./screen/listPosts.js";
+import ListPostsUserAdded from "./screen/postUserAdded.js";
 
-let _listPostsUser =  new ListPostsUser()
+let _listPostsUserAdded =  new ListPostsUserAdded()
 let $master = document.querySelector('.master');
-$master.append(...await _listPostsUser.render())
+$master.append(...await _listPostsUserAdded.render())

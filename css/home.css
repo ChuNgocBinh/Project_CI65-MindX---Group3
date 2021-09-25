@@ -334,10 +334,16 @@
 .item-info  > a{
     font-weight: 500;
     text-decoration: underline;
+    margin-right: 20px;
+}
+
+.item-info  > a:hover{
+    color: var(--color-orange);
 }
 
 .item-info > p{
-    padding-top: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .para-items .item-comment{

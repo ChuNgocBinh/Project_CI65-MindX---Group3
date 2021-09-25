@@ -19,7 +19,7 @@ export default class Navbar extends BaseComponent {
 								<li class ="sub-nav-item"><a href="./createPost.html">Tạo món ăn</a></li>
 								<li class ="sub-nav-item"><a href="./listPosts.html">Các món ăn đã thêm</a></li>
 								<li class ="sub-nav-item"><a href="./allRecipes.html">Danh sách món ăn</a></li>
-								<li class ="sub-nav-item"><a href="#">Món ăn ưa thích</a></li>
+								<li class ="sub-nav-item"><a href="./favoriteFood.html">Món ăn ưa thích</a></li>
 							</ul>
 						</li>
 						<li class="nav-item"><a href="#">Giới thiệu</a></li>

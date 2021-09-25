@@ -1,33 +1,35 @@
 import BaseComponent from "../components/BaseComponent.js";
-import { updateInteract } from "../models/postFireBase.js";
 
-export default class ListPostsUser extends BaseComponent {
-	constructor(props) {
-		super(props);
-		this.state = [];
-	}
+export default class FavoriteFood extends BaseComponent {
+    constructor(props) {
+        super(props);
+        this.state = [];
+    }
 
+    render = async () => {
+        await db.collection('Post').get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                this.state.push(doc.data())
+            })
+        })
+        console.log(this.state)
 
-
-
-	render = async () => {
-		let arr = [];
-
-		//   await auth.onAuthStateChanged(async (user) => {
-		// 	if (user) {
-		// 		let nameDisplay = auth.currentUser.displayName;
-		// 	}
-		// })
-		await db.collection('Post').get().then((querySnapshot) => {
-			querySnapshot.forEach((doc) => {
-				this.state.push(doc.data())
-				arr.push(doc.id)
-			})
-		})
-		console.log(this.state)
-		console.log(arr)
-
-		let postItem = this.state.map((item, index) => {
+        let myFavorite = [];
+        await auth.onAuthStateChanged(async (user) => {
+            if (user) {
+                let emailUser = auth.currentUser.email;
+                console.log(emailUser)
+                console.log(this.state)
+                this.state.forEach(item => {
+                    if (item.memberLike.includes(emailUser) == true) {
+                        myFavorite.push(item)
+                    }
+                })
+                console.log(myFavorite)
+            }
+        })
+        console.log(myFavorite)
+        let postItem = myFavorite.map((item, index) => {
 			let $container = document.createElement('div');
 			$container.classList.add('content__items');
 
@@ -143,19 +145,5 @@ export default class ListPostsUser extends BaseComponent {
 			return $container
 		})
 		return postItem
-	}
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

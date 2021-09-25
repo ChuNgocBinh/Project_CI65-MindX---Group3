@@ -355,8 +355,8 @@
     display: none;
 } */
 
-.item-comment .checked{
-    color: red;
+.item-comment .liked{
+    color: var(--color-orange);
 }
 
 /* ---------------------footer--------------- */

@@ -11,11 +11,10 @@ export default async function setPosts(data) {
         data.author = displayName;
         data.dateModifier = date.toISOString();
         data.comment = [];
-        data.interact = {
-            numberLike: 0,
-            numberComment:0,
-            numberView:0
-        }
+        data.numberView = 0;
+        data.numberLike = 0;
+        data.memberLike = [];
+
         await db.collection('Post').add(data);
         await db.collection(`${displayName}`).add(data);
         alert('Tạo mới thành công')
@@ -23,16 +22,14 @@ export default async function setPosts(data) {
     }
 }
 
-// add một collection mới
-export async function addFavorite(collection,data){
-    await db.collection(collection).add(data)
-}
 
 // update một value mới
 
 export async function updateInteract(collection,doc,data){
     await db.collection(`${collection}`).doc(doc).update(data)
 }
+
+
 
 
 // data.forEach(async (item) => {

@@ -1,4 +1,4 @@
-import data from "../data/data.js";
+
 
 export default async function setPosts(data) {
     let user = await auth.currentUser;
@@ -24,6 +24,8 @@ export default async function setPosts(data) {
 }
 
 
+
+
 // update một value mới
 
 export async function updateInteract(collection,doc,data){
@@ -36,7 +38,3 @@ export async function deletePost(collection,doc){
 
 
 
-// data.forEach(async (item) => {
-//     await db.collection('Post').add(item);
-
-// })

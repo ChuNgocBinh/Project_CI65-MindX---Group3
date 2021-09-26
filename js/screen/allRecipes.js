@@ -79,7 +79,7 @@ export default class Recipes extends BaseComponent {
 			$author.classList.add("author");
 			$author.innerHTML = 'Người viết: ' + item.author;
 			let $dateModifier = document.createElement('p');
-			$dateModifier.innerHTML = item.dateModifier;
+			$dateModifier.innerHTML = 'Ngày viết: ' + item.dateModifier;
 
 			$cardInfo.append(
 				$titlePara,

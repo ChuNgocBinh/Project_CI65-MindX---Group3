@@ -59,3 +59,8 @@ body {
     height: 10vh;
     width:80vw;
 }
+
+.item-comment .item{
+    margin-right: 20px;
+    cursor: pointer;
+}

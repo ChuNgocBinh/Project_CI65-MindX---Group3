@@ -1,6 +1,8 @@
 import BaseComponent from "../components/BaseComponent.js";
 import { deletePost, updateInteract } from "../models/postFireBase.js";
 
+
+
 export default class ListPostsUserAdded extends BaseComponent {
 	constructor(props) {
 		super(props);

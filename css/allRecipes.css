@@ -62,7 +62,7 @@ body {
 }
 #searchAYT {
     height: 10vh;
-    width: 80vw;
+    width: 50vw;
     font-size: 2rem;
 }
 
@@ -76,7 +76,7 @@ body {
 }
 
 h3{
-    /* font-family: 'Frank Ruhl Libre', serif; */
+    
     font-size: 1.6666666666rem;
 }
 .author,.date-added{

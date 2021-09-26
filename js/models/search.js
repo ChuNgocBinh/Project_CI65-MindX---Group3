@@ -7,19 +7,23 @@ export function search(keyword) {
         searchOnPage();
     }
 }
-
+function removeAccents(str) {
+    return str.normalize('NFD')
+              .replace(/[\u0300-\u036f]/g, '')
+              .replace(/đ/g, 'd').replace(/Đ/g, 'D');
+  }  
 export function searchOnPage() {
     console.log("searching on page")
     let keyword = localStorage.getItem("searchKeyword");
     console.log("keyword: " + keyword);
+    let targets = document.getElementsByClassName("searchTarget");
     if (!(keyword == "" || keyword === null)){
         keyword = keyword.toLowerCase()
-        let targets = document.getElementsByClassName("searchTarget");
         for(let target of targets) {
             let title = target.querySelector(".card-info h3").innerHTML.toLowerCase();
-            let author = target.querySelector(".card-comment p").innerHTML.toLowerCase();
-            console.log(title.includes(keyword), author.includes(keyword));
-            if (title.includes(keyword)|| author.includes(keyword)) {
+            let author = target.querySelector(".card-info .author").innerHTML.toLowerCase().replace('người viết: ','');
+            console.log(removeAccents(title).includes(removeAccents(keyword)), removeAccents(author).includes(removeAccents(keyword)));
+            if (removeAccents(title).includes(removeAccents(keyword))|| removeAccents(author).includes(removeAccents(keyword))) {
                 target.classList.remove("hidden");
             }
             else {
@@ -27,5 +31,10 @@ export function searchOnPage() {
             }
         }
         localStorage.removeItem("searchKeyword");
+    }
+    else {
+        for(let target of targets) {
+            target.classList.remove("hidden");
+        }
     }
 }

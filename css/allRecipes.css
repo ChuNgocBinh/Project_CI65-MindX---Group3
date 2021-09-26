@@ -8,8 +8,8 @@ body {
     /* justify-content: space-evenly; */
 }
 .card{
-    width: 20vw;
-    /* height: 50vh; */
+    width: 21vw;
+    height: 75vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,17 +25,18 @@ body {
     cursor: pointer;
     box-shadow: 6px 6px var(--color-orange);
 }
-.card-img, .card-content{
-    height:25vh;
+.card-img {
+    height: 30vh;
     width: 20vw;
 }
 .card-content{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-around; */
     margin-left: 2vh;
+    height: 75%;
 }
-.card-description{
+.card-description, h3{
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -46,6 +47,10 @@ body {
     min-width: 0;
     width: 20vw;
     max-width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 .hidden{
     display: none;
@@ -57,10 +62,23 @@ body {
 }
 #searchAYT {
     height: 10vh;
-    width:80vw;
+    width: 80vw;
+    font-size: 2rem;
 }
 
 .item-comment .item{
     margin-right: 20px;
     cursor: pointer;
+}
+
+.metadata{
+    height: 20%;
+}
+
+h3{
+    /* font-family: 'Frank Ruhl Libre', serif; */
+    font-size: 1.6666666666rem;
+}
+.author,.date-added{
+    font-weight: 600;
 }

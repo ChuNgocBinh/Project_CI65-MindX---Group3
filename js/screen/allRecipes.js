@@ -75,18 +75,28 @@ export default class Recipes extends BaseComponent {
 			$titlePara.innerHTML = item.nameFood;
 			let $subTitlePara = document.createElement('p');
 			$subTitlePara.innerHTML = item.desciptionFood;
-			let $author = document.createElement('p');
-			$author.classList.add("author");
-			$author.innerHTML = 'Người viết: ' + item.author;
-			let $dateModifier = document.createElement('p');
-			$dateModifier.innerHTML = 'Ngày viết: ' + item.dateModifier;
+			$subTitlePara.classList.add("card-description");
 
 			$cardInfo.append(
 				$titlePara,
 				$subTitlePara,
+			)
+
+			let $metadata = document.createElement('div');
+			$metadata.classList.add("metadata");
+			
+			let $author = document.createElement('p');
+			$author.classList.add("author");
+			$author.innerHTML = 'Người viết: ' + item.author;
+			let $dateModifier = document.createElement('p');
+			$dateModifier.classList.add("date-added")
+			$dateModifier.innerHTML = 'Ngày viết: ' + item.dateModifier;
+			
+			$metadata.append(
 				$author,
 				$dateModifier,
 			)
+
 
 			let $cardComment = document.createElement('div');
 			$cardComment.classList.add('item-comment');
@@ -146,7 +156,7 @@ export default class Recipes extends BaseComponent {
 
 			$cardComment.append($labelLike, $spanComment, $spanView)
 
-			$cardContent.append($cardInfo, $cardComment);
+			$cardContent.append($cardInfo, $metadata, $cardComment);
 
 			$container.append($imgItem, $cardContent)
 

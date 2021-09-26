@@ -144,8 +144,6 @@ export default class ListPostsUserAdded extends BaseComponent {
 				}
 			})
 
-
-
 			let $spanComment = document.createElement('span');
 			$spanComment.id = 'comment';
 			$spanComment.classList.add('item');

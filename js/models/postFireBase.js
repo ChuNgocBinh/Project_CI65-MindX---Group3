@@ -11,7 +11,7 @@ export default async function setPosts(data) {
         let date = new Date();
         data.author = displayName;
         data.emailUser = displayEmail;
-        data.dateModifier = date.toISOString();
+        data.dateModifier = date.toLocaleDateString('en-GB');
         data.comment = [];
         data.numberView = 0;
         data.numberLike = 0;

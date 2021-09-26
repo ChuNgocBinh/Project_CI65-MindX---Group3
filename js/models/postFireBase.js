@@ -13,7 +13,7 @@ export default async function setPosts(data) {
         data.emailUser = displayEmail;
         data.dateModifier = date.toLocaleDateString('en-GB');
         let dateInfo = data.dateModifier.split("/");
-        data.dateSort = dateInfo[2]+dateInfo[1]+dateInfo[0];
+        data.dateSort = parseInt(dateInfo[2]+dateInfo[1]+dateInfo[0]);
         console.log(data.dateSort);
         data.comment = [];
         data.numberView = 0;

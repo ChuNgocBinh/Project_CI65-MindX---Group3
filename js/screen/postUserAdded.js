@@ -12,7 +12,7 @@ export default class ListPostsUserAdded extends BaseComponent {
 	render = async () => {
 		let arr = [];
 
-		await db.collection('Post').get().then((querySnapshot) => {
+		await db.collection('Post').orderBy("author").get().then((querySnapshot) => {
 			querySnapshot.forEach((doc) => {
 				this.state.push(doc.data())
 				arr.push(doc.id)

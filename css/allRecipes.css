@@ -56,6 +56,11 @@ body {
     justify-content: center;
 }
 #searchAYT {
-    height: 10vh;
-    width:80vw;
+    height: 8vh;
+    width: 80vw;
+    border: 3px solid var(--color-orange);
+    border-radius: 5px;
+    outline: none;
+    padding: 1vh;
+    font-size: 2rem;
 }

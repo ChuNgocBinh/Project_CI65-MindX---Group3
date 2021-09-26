@@ -10,7 +10,7 @@ export default class Recipes extends BaseComponent {
 
 	async render() {
 		let arr = [];
-		await db.collection("Post").orderBy("dateModifier").get().then((querySnapshot) => {
+		await db.collection("Post").orderBy("dateModifier", "desc").get().then((querySnapshot) => {
 			querySnapshot.forEach((doc) => {
 				this.state.push(doc.data());
 				arr.push(doc.id);

@@ -21,7 +21,7 @@ export function searchOnPage() {
         keyword = keyword.toLowerCase()
         for(let target of targets) {
             let title = target.querySelector(".card-info h3").innerHTML.toLowerCase();
-            let author = target.querySelector(".card-info .author").innerHTML.toLowerCase().replace('người viết: ','');
+            let author = target.querySelector(".metadata .author").innerHTML.toLowerCase().replace('người viết: ','');
             console.log(removeAccents(title).includes(removeAccents(keyword)), removeAccents(author).includes(removeAccents(keyword)));
             if (removeAccents(title).includes(removeAccents(keyword))|| removeAccents(author).includes(removeAccents(keyword))) {
                 target.classList.remove("hidden");

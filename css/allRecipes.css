@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+}
 body {
     padding-top: 50px;
 }
@@ -5,15 +8,17 @@ body {
     display: grid;
     grid-template-columns: auto auto auto auto;
     padding: 2vw;
+    column-gap: 1vh;
+    row-gap: 2vh;
     /* justify-content: space-evenly; */
 }
 .card{
-    width: 21vw;
-    height: 75vh;
+    min-width: 21vw;
+    /* min-height: 75vh; */
+    /* height: min-content; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 2vh;
     background-color:whitesmoke;
     transition: 0.5s;
     padding: 2vh;
@@ -32,7 +37,7 @@ body {
 .card-content{
     display: flex;
     flex-direction: column;
-    /* justify-content: space-around; */
+    justify-content: center;
     margin-left: 2vh;
     height: 75%;
 }
@@ -69,14 +74,16 @@ body {
 .item-comment .item{
     margin-right: 20px;
     cursor: pointer;
+    bottom: 0;
+    background-color: aqua;
 }
 
 .metadata{
-    height: 20%;
+   display: flex;
+   flex-direction: column;
 }
 
 h3{
-    
     font-size: 1.6666666666rem;
 }
 .author,.date-added{

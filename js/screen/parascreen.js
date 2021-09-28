@@ -9,7 +9,7 @@ export default class Posts extends BaseComponent {
 
 	async render() {
 		let arr = [];
-		await db.collection("Post").orderBy("numberLike", "desc").get().then((querySnapshot) => {
+		await db.collection("Post").orderBy("numberLike", "desc").limit(10).get().then((querySnapshot) => {
 			querySnapshot.forEach((doc) => {
 				this.state.push(doc.data());
 				arr.push(doc.id);

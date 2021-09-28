@@ -89,6 +89,9 @@ export default class DetailFood extends BaseComponent {
             })
 
 
+            let $interact = document.createElement('div');
+            $interact.append(...commentArray);
+
             let $inputComment = document.createElement('input');
             $inputComment.classList.add('inputComment');
             $inputComment.placeholder = 'Viết bình luận'
@@ -96,7 +99,52 @@ export default class DetailFood extends BaseComponent {
             let $btnComment = document.createElement('button');
             $btnComment.classList.add('btn-comment');
             $btnComment.innerHTML = 'Bình luận'
-            $btnComment.onclick = this.handleComment;
+            // let content = document.querySelector('.inputComment').value;
+
+
+            $btnComment.addEventListener('click', async function () {
+                let user = await auth.currentUser;
+                if (user == null) {
+                    alert('Bạn chưa đăng nhập tài khoản của mình');
+                } else if ($inputComment.value == "") {
+                    alert('Bạn phải nhập nội dung bình luận');
+                } else {
+                    let nameUser = await auth.currentUser.displayName;
+                    let idFoodJson = localStorage.getItem('idFood');
+                    let idFood = JSON.parse(idFoodJson);
+                    let postId = await db.collection('Post').doc(idFood);
+
+                    let postIdUpdate = await postId.update({
+                        comment: firebase.firestore.FieldValue.arrayUnion({
+                            name: nameUser,
+                            commentUser: $inputComment.value
+                        })
+                    });
+                }
+            })
+
+            $btnComment.addEventListener('click', function () {
+                let user = auth.currentUser;
+                // let content = document.querySelector('.inputComment').value;
+                if (user == null) {
+                } else if ($inputComment.value == "") {
+                } else {
+                    let nameUser = auth.currentUser.displayName;
+                    let $userComment = document.createElement('div');
+                    $userComment.classList.add('userComment')
+                    let $nameCommentUser = document.createElement('h4');
+                    $nameCommentUser.classList.add('nameCommentUser');
+                    $nameCommentUser.innerHTML = nameUser;
+                    let $contentCommentUser = document.createElement('p');
+                    $contentCommentUser.classList.add('contentCommentUser');
+                    $contentCommentUser.innerHTML = $inputComment.value;
+                    let $hrComment = document.createElement('hr');
+
+                    $userComment.append($nameCommentUser, $contentCommentUser, $hrComment)
+                    $interact.append($userComment)
+                    $inputComment.value = ''
+                }
+            })
 
 
             let $main = document.createElement('div');
@@ -115,47 +163,14 @@ export default class DetailFood extends BaseComponent {
                 $dateModifier,
                 $hr,
                 $titleComment,
-                ...commentArray,
+                $interact,
                 $inputComment,
                 $btnComment
             )
+
             return $main
 
         })
         return foodItem
-    }
-
-    handleComment = async () => {
-
-        let user = await auth.currentUser;
-        let content = document.querySelector('.inputComment').value;
-        console.log(user)
-        if (user == null) {
-            alert('Bạn chưa đăng nhập tài khoản của mình');
-        } else if (content == "") {
-            alert('Bạn phải nhập nội dung bình luận');
-        } else {
-            let idFoodJson = localStorage.getItem('idFood');
-            let idFood = JSON.parse(idFoodJson);
-            let nameUser = await auth.currentUser.displayName;
-            let postId = await db.collection('Post').doc(idFood);
-
-            let postIdUpdate = await postId.update({
-                comment: firebase.firestore.FieldValue.arrayUnion({
-                    name: nameUser,
-                    commentUser: content
-                })
-            });
-
-
-            content = "";
-
-
-            // this.render()
-            window.location.reload()
-
-        }
-
-
     }
 }

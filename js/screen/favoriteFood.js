@@ -20,20 +20,22 @@ export default class FavoriteFood extends BaseComponent {
         console.log(this.state)
 
         let myFavorite = [];
+        let myFavoriteId = [];
         await auth.onAuthStateChanged(async (user) => {
             if (user) {
                 let emailUser = auth.currentUser.email;
                 console.log(emailUser)
                 console.log(this.state)
-                this.state.forEach(item => {
+                this.state.forEach((item, index) => {
                     if (item.memberLike.includes(emailUser) == true) {
                         myFavorite.push(item)
+                        myFavoriteId.push(arr[index])
                     }
                 })
-                console.log(myFavorite)
             }
         })
         console.log(myFavorite)
+		console.log(myFavoriteId)
         let postItem = myFavorite.map((item, index) => {
 			let $container = document.createElement('div');
 			$container.classList.add('content__items');
@@ -67,12 +69,12 @@ export default class FavoriteFood extends BaseComponent {
 			$linkDetail.classList.add('details')
 			$linkDetail.addEventListener('click', async function (e) {
 				e.preventDefault();
-				console.log(arr[index])
-				localStorage.setItem('idFood', JSON.stringify(arr[index]));
+				console.log(myFavoriteId[index])
+				localStorage.setItem('idFood', JSON.stringify(myFavoriteId[index]));
 
 				let numberView = item.numberView;
 				let collection = 'Post'
-				await updateInteract(collection, arr[index], { numberView: numberView += 1 })
+				await updateInteract(collection, myFavoriteId[index], { numberView: numberView += 1 })
 
 				window.location.href = './detail.html'
 			})
@@ -98,19 +100,19 @@ export default class FavoriteFood extends BaseComponent {
 						let collection = 'Post'
 						let numberLike = item.numberLike;
 						if (item.memberLike.includes(emailUser) == false) {
-							await updateInteract(collection, arr[index], {
+							await updateInteract(collection, myFavoriteId[index], {
 								memberLike: firebase.firestore.FieldValue.arrayUnion(emailUser)
 							})
 							$lableLike.innerHTML = `<i class="fas fa-thumbs-up"></i> <span class="number-like"> ${item.numberLike + 1}</span>`;
-							await updateInteract(collection, arr[index], { numberLike: numberLike += 1 })
+							await updateInteract(collection, myFavoriteId[index], { numberLike: numberLike += 1 })
 							$lableLike.classList.add('liked');
 							alert('Lưu thành công món ăn vào danh sách yêu thích của bạn');
 						} else {
-							await updateInteract(collection, arr[index], {
+							await updateInteract(collection, myFavoriteId[index], {
 								memberLike: firebase.firestore.FieldValue.arrayRemove(emailUser)
 							})
 							$lableLike.innerHTML = `<i class="fas fa-thumbs-up"></i> <span class="number-like"> ${item.numberLike - 1}</span>`;
-							await updateInteract(collection, arr[index], { numberLike: numberLike -= 1 })
+							await updateInteract(collection, myFavoriteId[index], { numberLike: numberLike -= 1 })
 							$lableLike.classList.remove('liked');
 							alert('Xóa món ăn khỏi danh sách yêu thích thành công');
 						}

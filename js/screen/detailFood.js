@@ -138,7 +138,7 @@ export default class DetailFood extends BaseComponent {
             let idFoodJson = localStorage.getItem('idFood');
             let idFood = JSON.parse(idFoodJson);
             let nameUser = await auth.currentUser.displayName;
-            let postId = await db.collection('Post').doc(idFood); 
+            let postId = await db.collection('Post').doc(idFood);
 
             let postIdUpdate = await postId.update({
                 comment: firebase.firestore.FieldValue.arrayUnion({
@@ -147,10 +147,12 @@ export default class DetailFood extends BaseComponent {
                 })
             });
 
-            
-            content = "",
-                // this.render()
-                window.location.reload()
+
+            content = "";
+
+
+            // this.render()
+            window.location.reload()
 
         }
 

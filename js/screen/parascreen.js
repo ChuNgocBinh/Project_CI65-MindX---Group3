@@ -1,84 +1,159 @@
 import BaseComponent from "../components/BaseComponent.js";
+import { updateInteract } from "../models/postFireBase.js";
 
 export default class Posts extends BaseComponent {
 	constructor(props) {
 		super(props);
-		this.state = [
-			{
-				image: './img/img-para/img1.jpg',
-				title: 'Vịt om măng chua nóng hổi nhưng giúp "hạ hỏa", dễ làm ngày giãn cách',
-				content: 'Thịt vịt mát, dễ chế biến, dễ ăn, hợp túi tiền của mọi tầng lớp. Món vịt om măng ngon...',
-			},
-			{
-				image: './img/img-para/img2.jpg',
-				title: 'Những sai lầm nguy hiểm khi ăn thịt gà, cần loại bỏ ngay',
-				content: 'Thịt gà là thực phẩm quen thuộc của mỗi gia đình, tuy nhiên không phải ai cũng biết ăn thịt...',
-			},
-			{
-				image: './img/img-para/img3.jpg',
-				title: 'Thực đơn 4 món ngon bổ dưỡng, giúp tăng cường sức đề kháng vào mùa dịch',
-				content: '4 món này đều rất ngon và phù hợp với khẩu vị của nhiều người, đặc biệt có món trẻ nhỏ rất thích.',
-			},
-			{
-				image: './img/img-para/img4.jpg',
-				title: 'Cách chế biến món ốc len xào dừa trứ danh vùng cực Nam Tổ quốc',
-				content: 'Ốc len xào dừa- món ăn bình dị gắn liền với bữa cơm của người dân lao động nhưng nay...',
-			},
-			{
-				image: './img/img-para/img1.jpg',
-				title: 'Vịt om măng chua nóng hổi nhưng giúp "hạ hỏa", dễ làm ngày giãn cách',
-				content: 'Thịt vịt mát, dễ chế biến, dễ ăn, hợp túi tiền của mọi tầng lớp. Món vịt om măng ngon...',
-			},
-			{
-				image: './img/img-para/img2.jpg',
-				title: 'Những sai lầm nguy hiểm khi ăn thịt gà, cần loại bỏ ngay',
-				content: 'Thịt gà là thực phẩm quen thuộc của mỗi gia đình, tuy nhiên không phải ai cũng biết ăn thịt...',
-			},
-			{
-				image: './img/img-para/img3.jpg',
-				title: 'Thực đơn 4 món ngon bổ dưỡng, giúp tăng cường sức đề kháng vào mùa dịch',
-				content: '4 món này đều rất ngon và phù hợp với khẩu vị của nhiều người, đặc biệt có món trẻ nhỏ rất thích.',
-			},
-			{
-				image: './img/img-para/img4.jpg',
-				title: 'Cách chế biến món ốc len xào dừa trứ danh vùng cực Nam Tổ quốc',
-				content: 'Ốc len xào dừa- món ăn bình dị gắn liền với bữa cơm của người dân lao động nhưng nay...',
-			},
-		]
+		this.state = []
 	}
 
-	render() {
-		let postItem = this.state.map(item => {
-			let $contentItem = document.createElement('div');
-			$contentItem.classList.add('content__items');
-			$contentItem.innerHTML = `
-				<div class="img-item">
-					<img src="${item.image}" alt="img">
-				</div>
-				<div class="para-items">
-					<div class="item-info">
-						<h3>${item.title}</h3>
-						<p>${item.content}</p>
-						<a href="#">Xem chi tiết</a>
-					</div>
-					<div class="item-comment">
-						<label for="like" class="item"><i class="far fa-heart"></i> <span class="number-like">0</span></label>
-						<input type="checkbox" id="like" class="item">
-						<span id="comment" class="item"><i class="fas fa-comments"></i><span class="number-like">0</span></span>
-						<span id="view" class="item"><i class="fas fa-eye"></i><span class="number-like">0</span></span>
-					</div>
-				</div>
-			`
-			return $contentItem
+	async render() {
+		let arr = [];
+		await db.collection("Post").orderBy("numberLike", "desc").get().then((querySnapshot) => {
+			querySnapshot.forEach((doc) => {
+				this.state.push(doc.data());
+				arr.push(doc.id);
+			});
 		})
-		return postItem
+
+		let postItem = this.state.map((item, index) => {
+			let $container = document.createElement('div');
+			$container.classList.add('content__items');
+
+			let $imgItem = document.createElement('div');
+			$imgItem.classList.add('img-item');
+
+			let $imgFace = document.createElement('img');
+			$imgFace.src = item.linkImgFood;
+			$imgFace.alt = `Ảnh minh họa`;
+
+			$imgItem.append($imgFace)
+
+			let $paraItems = document.createElement('div');
+			$paraItems.classList.add('para-items');
+
+			let $itemInfo = document.createElement('div');
+			$itemInfo.classList.add('item-info')
+
+			let $titlePara = document.createElement('h3');
+			$titlePara.innerHTML = item.nameFood;
+			let $subTitlePara = document.createElement('p');
+			$subTitlePara.innerHTML = item.desciptionFood;
+			let $author = document.createElement('p');
+			$author.innerHTML = 'Người viết: ' + item.author;
+			let $dateModifier = document.createElement('p');
+			$dateModifier.innerHTML = item.dateModifier;
+			let $linkDetail = document.createElement('a');
+			$linkDetail.href = '#';
+			$linkDetail.innerHTML = 'Xem chi tiết';
+			$linkDetail.classList.add('details')
+			$linkDetail.addEventListener('click', async function (e) {
+				e.preventDefault();
+				console.log(arr[index])
+				localStorage.setItem('idFood', JSON.stringify(arr[index]));
+
+				let numberView = item.numberView;
+				let collection = 'Post'
+				await updateInteract(collection, arr[index], { numberView: numberView += 1 })
+
+				window.location.href = './detail.html'
+			})
+
+			$itemInfo.append(
+				$titlePara,
+				$subTitlePara,
+				$author,
+				$dateModifier,
+				$linkDetail
+			)
+
+			let $itemComment = document.createElement('div');
+			$itemComment.classList.add('item-comment');
+
+			let $lableLike = document.createElement('label');
+			$lableLike.classList.add('item');
+			$lableLike.innerHTML = `<i class="fas fa-thumbs-up"></i> <span class="number-like"> ${item.numberLike}</span>`;
+			$lableLike.onclick = async function () {
+				await auth.onAuthStateChanged(async (user) => {
+					if (user) {
+						let emailUser = auth.currentUser.email;
+						let collection = 'Post'
+						let numberLike = item.numberLike;
+						if (item.memberLike.includes(emailUser) == false) {
+							await updateInteract(collection, arr[index], {
+								memberLike: firebase.firestore.FieldValue.arrayUnion(emailUser)
+							})
+							$lableLike.innerHTML = `<i class="fas fa-thumbs-up"></i> <span class="number-like"> ${item.numberLike + 1}</span>`;
+							await updateInteract(collection, arr[index], { numberLike: numberLike += 1 })
+							$lableLike.classList.add('liked');
+							alert('Lưu thành công món ăn vào danh sách yêu thích của bạn');
+						} else {
+							await updateInteract(collection, arr[index], {
+								memberLike: firebase.firestore.FieldValue.arrayRemove(emailUser)
+							})
+							$lableLike.innerHTML = `<i class="fas fa-thumbs-up"></i> <span class="number-like"> ${item.numberLike - 1}</span>`;
+							await updateInteract(collection, arr[index], { numberLike: numberLike -= 1 })
+							$lableLike.classList.remove('liked');
+							alert('Xóa món ăn khỏi danh sách yêu thích thành công');
+						}
+					}
+				})
+			}
+
+			auth.onAuthStateChanged(async (user) => {
+				if (user) {
+					let emailUser = auth.currentUser.email;
+					if (item.memberLike.includes(emailUser) == true) {
+						$lableLike.classList.add('liked');
+					} else {
+						$lableLike.classList.remove('liked');
+					}
+				}
+			})
 
 
 
+			let $spanComment = document.createElement('span');
+			$spanComment.id = 'comment';
+			$spanComment.classList.add('item');
+			$spanComment.innerHTML = `<i class="fas fa-comments"></i><span class="number-comment"> ${item.comment.length}</span>`;
+
+			let $spanView = document.createElement('span');
+			$spanView.id = 'view';
+			$spanView.classList.add('item');
+			$spanView.innerHTML = `<i class="fas fa-eye"></i><span class="number-view"> ${item.numberView}</span>`;
+
+			$itemComment.append($lableLike, $spanComment, $spanView)
+
+			$paraItems.append($itemInfo, $itemComment);
+
+			$container.append($imgItem, $paraItems)
+
+			return $container
+		})
+
+		let $main = document.createElement('div');
+		$main.className = 'main'
+		for (let i = 1; i < postItem.length; i++) {
+			$main.append(postItem[i])
+		}
+
+		let $featured = document.createElement('div');
+		$featured.className = 'featured'
+
+		console.log(postItem[0]);
+		
+		$featured.append(postItem[0])
 
 
-
-
-
+		return [$featured,$main]
 	}
+
+
+
+
+
+
+
+
 }

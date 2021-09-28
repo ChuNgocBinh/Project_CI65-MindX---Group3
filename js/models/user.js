@@ -13,7 +13,7 @@ export async function register(name, email, password) {
 export async function login(email, password) {
     try {
     await auth.signInWithEmailAndPassword(email, password); // xảy ra hiện tượng bất đồng bộ
-        alert('đăng nhập thành công');
+        // alert('đăng nhập thành công');
         window.location.href ='./home.html'
     } catch (error) {
         alert(error.message)

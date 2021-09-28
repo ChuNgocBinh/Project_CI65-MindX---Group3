@@ -215,58 +215,39 @@
     background-color: var(--color-orange);
 }
 
-/* recipes (featured + main) */
 .recipes {
     display: flex;
     width: 100%;
-    position: relative;
+    margin-bottom: 20px;
 }
 
-/* featured */
-.featured__item {
-    height: 90vh;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    align-items: flex-end;
-    position: sticky;
-    top: 60px;
-    justify-content: center;
+.featured{
+    border-right: 1px #ccc solid;
 }
 
-.featured-content {
-   /* background-image: url("../img/featured-frame.png");
-   background-size: 100%; */
-   background-color: white;
-   background-repeat: no-repeat;
-   width: 80%;
-   position: relative;
-   bottom: 5%;
-   opacity: 0.8;
-   padding: 1px;
+.featured .content__items{
+    display: block;
 }
 
-.featured-info{
-    border: 3px solid gold;
-
-}
-
-.featured-info > h3{
-    text-align: center;
-    font-size: 3rem;
-}
-
-.featured-info > p{
-    font-size: 2rem;
+.featured .content__items .img-item{
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
 }
 
 /* -------------------sửa phần main-------------------- */
 
+
+
+
+
+
+
+
 .main, .featured {
     width: 50%;
-    /* overflow: auto;
-    height: 75vh; */
-    margin-right: 0;
+    max-height: 100vh;
+    overflow-y: auto;
 }
 
 .main .content{
@@ -274,19 +255,7 @@
 }
 
 .main .content{
-    /* margin-left: 10px; */
     margin-bottom: 0;
-    background-color: white;
-}
-
-.content__title{
-    margin: 10px 20px;
-    font-size: 30px;
-    font-weight: 500;
-    border-bottom: 1px rgba(87, 63, 63, 0.2) solid;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 70px;
     background-color: white;
 }
 
@@ -344,6 +313,12 @@
 .item-info > p{
     margin-top: 10px;
     margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    
 }
 
 .para-items .item-comment{
@@ -357,13 +332,19 @@
     cursor: pointer;
 }
 
-/* .item-comment input{
-    display: none;
-} */
 
 .item-comment .liked{
     color: var(--color-orange);
 }
+
+
+
+
+
+
+
+
+
 
 /* ---------------------footer--------------- */
 

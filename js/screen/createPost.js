@@ -36,6 +36,7 @@ export default class CreatePosts extends BaseComponent {
         };
     }
 
+
     handleInputChange = (name, value) => {
         let tmpState = this.state;
         tmpState.data[name] = value.trim();
@@ -53,8 +54,8 @@ export default class CreatePosts extends BaseComponent {
             type: 'text',
             value: this.state.data.nameFood,
             error: this.state.errors.nameFood,
-            onchange: (e)=>{
-                this.handleInputChange('nameFood',e.target.value)
+            onchange: (e) => {
+                this.handleInputChange('nameFood', e.target.value)
             }
         });
 
@@ -63,8 +64,8 @@ export default class CreatePosts extends BaseComponent {
             type: 'text',
             value: this.state.data.desciptionFood,
             error: this.state.errors.desciptionFood,
-            onchange: (e)=>{
-                this.handleInputChange('desciptionFood',e.target.value)
+            onchange: (e) => {
+                this.handleInputChange('desciptionFood', e.target.value)
             }
         });
 
@@ -73,7 +74,7 @@ export default class CreatePosts extends BaseComponent {
             type: 'file',
             value: "",
             error: this.state.errors.linkImgFood,
-            onchange: async (e)=>{
+            onchange: async (e) => {
                 // process image////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 var image = e.target.files[0];
                 const metadata = {
@@ -83,45 +84,45 @@ export default class CreatePosts extends BaseComponent {
                 var uploadTask = storageRef.put(image, metadata);
                 // Listen for state changes, errors, and completion of the upload.
                 uploadTask.on('state_changed',
-                (snapshot) => {
-                // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                console.log('Upload is ' + progress + '% done');
-                switch (snapshot.state) {
-                    case 'paused':
-                    console.log('Upload is paused');
-                    break;
-                    case 'running':
-                    console.log('Upload is running');
-                    break;
-                }
-                }, 
-                (error) => {
-                // A full list of error codes is available at
-                // https://firebase.google.com/docs/storage/web/handle-errors
-                switch (error.code) {
-                    case 'storage/unauthorized':
-                    // User doesn't have permission to access the object
-                    break;
-                    case 'storage/canceled':
-                    // User canceled the upload
-                    break;
+                    (snapshot) => {
+                        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+                        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                        console.log('Upload is ' + progress + '% done');
+                        switch (snapshot.state) {
+                            case 'paused':
+                                console.log('Upload is paused');
+                                break;
+                            case 'running':
+                                console.log('Upload is running');
+                                break;
+                        }
+                    },
+                    (error) => {
+                        // A full list of error codes is available at
+                        // https://firebase.google.com/docs/storage/web/handle-errors
+                        switch (error.code) {
+                            case 'storage/unauthorized':
+                                // User doesn't have permission to access the object
+                                break;
+                            case 'storage/canceled':
+                                // User canceled the upload
+                                break;
 
-                    // ...
+                            // ...
 
-                    case 'storage/unknown':
-                    // Unknown error occurred, inspect error.serverResponse
-                    break;
-                }
-                }, 
-                async () => {
-                // Upload completed successfully, now we can get the download URL
-                console.log('Upload completed successfully');
-                var imgURL = await uploadTask.snapshot.ref.getDownloadURL();
-                console.log('File available at', imgURL);
-                ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                this.handleInputChange('linkImgFood',imgURL);
-                }
+                            case 'storage/unknown':
+                                // Unknown error occurred, inspect error.serverResponse
+                                break;
+                        }
+                    },
+                    async () => {
+                        // Upload completed successfully, now we can get the download URL
+                        console.log('Upload completed successfully');
+                        var imgURL = await uploadTask.snapshot.ref.getDownloadURL();
+                        console.log('File available at', imgURL);
+                        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        this.handleInputChange('linkImgFood', imgURL);
+                    }
                 );
             }
         });
@@ -133,8 +134,8 @@ export default class CreatePosts extends BaseComponent {
             type: 'text',
             value: this.state.data.tutorialFood,
             error: this.state.errors.tutorialFood,
-            onchange: (e)=>{
-                this.handleInputChange('tutorialFood',e.target.value)
+            onchange: (e) => {
+                this.handleInputChange('tutorialFood', e.target.value)
             }
         });
 
@@ -143,8 +144,8 @@ export default class CreatePosts extends BaseComponent {
             type: 'text',
             value: this.state.data.levelFood,
             error: this.state.errors.levelFood,
-            onchange: (e)=>{
-                this.handleInputChange('levelFood',e.target.value)
+            onchange: (e) => {
+                this.handleInputChange('levelFood', e.target.value)
             }
         });
 
@@ -153,8 +154,8 @@ export default class CreatePosts extends BaseComponent {
             type: 'text',
             value: this.state.data.timeFood,
             error: this.state.errors.timeFood,
-            onchange: (e)=>{
-                this.handleInputChange('timeFood',e.target.value)
+            onchange: (e) => {
+                this.handleInputChange('timeFood', e.target.value)
             }
         });
 
@@ -162,8 +163,8 @@ export default class CreatePosts extends BaseComponent {
             placeholder: 'Nhập nguyên liệu thực hiện món ăn',
             value: this.state.data.materialFood,
             error: this.state.errors.materialFood,
-            onchange: (e)=>{
-                this.handleInputChange('materialFood',e.target.value)
+            onchange: (e) => {
+                this.handleInputChange('materialFood', e.target.value)
             }
         });
 
@@ -171,8 +172,8 @@ export default class CreatePosts extends BaseComponent {
             placeholder: 'Nhập cách sơ chế món ăn',
             value: this.state.data.processFood,
             error: this.state.errors.processFood,
-            onchange: (e)=>{
-                this.handleInputChange('processFood',e.target.value)
+            onchange: (e) => {
+                this.handleInputChange('processFood', e.target.value)
             }
         });
 
@@ -180,14 +181,59 @@ export default class CreatePosts extends BaseComponent {
             placeholder: 'Nhập cách chế biến món ăn',
             value: this.state.data.skillFood,
             error: this.state.errors.skillFood,
-            onchange: (e)=>{
-                this.handleInputChange('skillFood',e.target.value)
+            onchange: (e) => {
+                this.handleInputChange('skillFood', e.target.value)
             }
         });
 
         let $btnSubmit = document.createElement('button');
         $btnSubmit.classList.add('btn');
         $btnSubmit.innerHTML = 'Tạo bài viết';
+
+        let $btnEdit = document.createElement('button');
+        $btnEdit.classList.add('btn');
+        $btnEdit.innerHTML = 'chỉnh sửa bài viết';
+        $btnEdit.onclick = async function (e) {
+            e.preventDefault()
+
+
+
+        }
+
+        let editPost = async () => {
+
+
+            let idEditFoodJson = localStorage.getItem('idEditFood')
+            let idEditFood = JSON.parse(idEditFoodJson);
+            console.log(idEditFood);
+            if (idEditFood !== null) {
+                let contentFood = [];
+                await db.collection('Post').get().then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+                        if (doc.id == idEditFood) {
+                            contentFood.push(doc.data())
+                        }
+                    })
+                })
+               
+                let newState = this.state;
+                newState.data.nameFood = contentFood[0].nameFood;
+                newState.data.desciptionFood = contentFood[0].desciptionFood;
+
+                console.log(newState)
+                // this.setState(newState)
+
+             
+            }
+        }
+
+        editPost()
+
+
+
+
+
+
 
         let $form = document.createElement('form');
         $form.classList.add('create__post');
@@ -205,6 +251,7 @@ export default class CreatePosts extends BaseComponent {
             _processlFood.render(),
             _skillFood.render(),
             $btnSubmit,
+            $btnEdit,
         )
 
         return $form
@@ -262,12 +309,12 @@ export default class CreatePosts extends BaseComponent {
             isPassed = false;
         }
         console.log(isPassed)
-        
+
         let tmpState = this.state;
         tmpState.errors = errors
         this.setState(tmpState)
 
-        if(isPassed){
+        if (isPassed) {
             setPosts(this.state.data)
             // window.location.href = "./home.html"
 

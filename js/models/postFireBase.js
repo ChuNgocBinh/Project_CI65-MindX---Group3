@@ -21,8 +21,8 @@ export default async function setPosts(data) {
         data.memberLike = [];
 
         await db.collection('Post').add(data);
-        alert('Tạo mới thành công')
-        window.location.href = './home.html'
+        // alert('Tạo mới thành công')
+        window.location.href = './listPosts.html'
     }
 }
 

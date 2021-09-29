@@ -1,5 +1,5 @@
 import BaseComponent from "./BaseComponent.js";
-import {search} from "../models/search.js";
+import { search } from "../models/search.js";
 export default class Navbar extends BaseComponent {
 	constructor(props) {
 		super(props);
@@ -11,35 +11,46 @@ export default class Navbar extends BaseComponent {
 
 		let $navLink = document.createElement('div');
 		$navLink.classList.add('nav-link');
-		$navLink.innerHTML = `
-					<ul class="nav">
-						<li class="nav-item link-active"><a href="./home.html">Trang chủ</a></li>
+
+		let $close = document.createElement('div');
+		$close.classList.add('close');
+		$close.innerHTML = `<i class="fas fa-times"></i>`
+		$close.onclick = ()=>{
+			$navLink.style.transform = 'translateX(-400px)'
+			$navLink.style.transition = '0.3s linear'
+		}
+
+		let $navUl = document.createElement('ul');
+		$navUl.classList.add('nav');
+		$navUl.innerHTML = `
+						<li class="nav-item nav-padding link-active"><div class = "icon-nav"><i class="fas fa-home"></i></div><a href="./home.html">Trang chủ</a></li>
 						<li class="nav-item dropdown"><a href="#">Công thức <i class="fas fa-angle-down"></i></a>
 							<ul class="sub-nav">
-								<li class ="sub-nav-item"><a href="./createPost.html">Tạo món ăn</a></li>
-								<li class ="sub-nav-item"><a href="./listPosts.html">Các món ăn đã thêm</a></li>
-								<li class ="sub-nav-item"><a href="./allRecipes.html">Danh sách món ăn</a></li>
-								<li class ="sub-nav-item"><a href="./favoriteFood.html">Món ăn ưa thích</a></li>
+								<li class ="sub-nav-item"><div class = "icon-nav"><i class="fas fa-plus-circle"></i></div><a href="./createPost.html">Tạo món ăn</a></li>
+								<li class ="sub-nav-item"><div class = "icon-nav"><i class="fas fa-bookmark"></i></div><a href="./listPosts.html">Các món ăn đã thêm</a></li>
+								<li class ="sub-nav-item"><div class = "icon-nav"><i class="fas fa-list"></i></div><a href="./allRecipes.html">Danh sách món ăn</a></li>
+								<li class ="sub-nav-item"><div class = "icon-nav"><i class="fas fa-thumbs-up"></i></div><a href="./favoriteFood.html">Món ăn ưa thích</a></li>
 							</ul>
 						</li>
-						<li class="nav-item"><a href="#">Giới thiệu</a></li>
-						<li class="nav-item"><a href="#">Liên hệ</a></li>
-					</ul>
-				`
+						<li class="nav-item nav-padding"><div class = "icon-nav"><i class="fas fa-users"></i></div><a href="#">Giới thiệu</a></li>
+						<li class="nav-item nav-padding"><div class = "icon-nav"><i class="fas fa-phone"></i></div><a href="#">Liên hệ</a></li>
+						`
+		$navLink.append($close,$navUl)
+			
 		let $inputSearch = document.createElement('div');
 		$inputSearch.classList.add('input-search');
 		let $search = document.createElement('input');
-		$search.type="search";
-		$search.placeholder="Search..."
+		$search.type = "search";
+		$search.placeholder = "Search..."
 		$search.id = "search";
-		$search.addEventListener("keyup", function(e){
-			if (e.key === "Enter"){
+		$search.addEventListener("keyup", function (e) {
+			if (e.key === "Enter") {
 				search($search.value)
 			}
 		});
 		let $btnSearch = document.createElement('button');
-		$btnSearch.class="btn-search";
-		$btnSearch.addEventListener("click", function(){
+		$btnSearch.class = "btn-search";
+		$btnSearch.addEventListener("click", function () {
 			search($search.value)
 		});
 		$btnSearch.innerHTML = `
@@ -57,7 +68,16 @@ export default class Navbar extends BaseComponent {
 
 		let $nav = document.createElement('div');
 		$nav.classList.add('navbar');
-		$nav.append($logo, $navLink, $navSearch)
+
+		let $bars = document.createElement('div');
+		$bars.classList.add('bars');
+		$bars.innerHTML = `<i class="fas fa-bars"></i>`
+		$bars.onclick = () => {
+			$navLink.style.transform = 'translateX(0px)'
+			$navLink.style.transition = '0.3s linear'
+		}
+
+		$nav.append($bars, $logo, $navLink, $navSearch)
 
 
 		return $nav
@@ -114,5 +134,7 @@ export default class Navbar extends BaseComponent {
 		await auth.signOut()
 		window.location.href = './signIn.html'
 	}
+
+	
 }
 

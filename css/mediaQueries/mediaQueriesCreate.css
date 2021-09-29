@@ -1,0 +1,28 @@
+@media only screen and (max-width: 739px)  {
+    :root{
+        --color-orange:rgba(255, 68, 0);
+    }
+
+    .main {
+        padding: 0 20px;
+    }
+}
+
+@media only screen and (min-width: 740px) and (max-width:1023px)  {
+    :root{
+        --color-orange:rgba(255, 68, 0);
+    }
+
+   .main {
+        padding: 0 50px;
+    }
+    
+}
+
+@media only screen and (min-width: 1024px) and (max-width:1199px) {
+    
+}
+
+@media only screen and (min-width: 1200px){
+    
+}

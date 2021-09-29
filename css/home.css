@@ -110,6 +110,7 @@
 
 .link-login .nameUser{
     padding: 20px 0;
+    width: 125px;
 }
 
 .link-login .logOutUser{
@@ -160,11 +161,14 @@
     color: white;
     font-size: 25px;
     display: none;
+    cursor: pointer;
 }
 
 .close, .icon-nav{
     display: none;
+    cursor: pointer;
 }
+
 
 
 

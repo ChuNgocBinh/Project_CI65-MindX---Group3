@@ -10,19 +10,10 @@ body {
     padding: 2vw;
     column-gap: 1vh;
     row-gap: 2vh;
-    /* justify-content: space-evenly; */
 }
 
-/* For mobile phones: */
-@media only screen and (max-width: 768px) {
-    .display{
-        grid-template-columns: auto;
-    }
-}
 .card{
     min-width: 21vw;
-    /* min-height: 75vh; */
-    /* height: min-content; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -56,33 +47,6 @@ body {
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
-/* .card-info{ */
-    /* min-width: 0;
-    width: 20vw;
-    max-width: 100%;
-    height: 60%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.hidden{
-    display: none;
-}
-.search-container{
-    padding-top: 2vw;
-    display: flex;
-    justify-content: center;
-}
-#searchAYT {
-    height: 10vh;
-    width: 50vw;
-    font-size: 2rem;
-}
-
-
-/* .item-comment{
-    align-self: flex-end;
-} */
 
 .item-comment .item{
     margin-right: 20px;

@@ -6,10 +6,12 @@
     /* --------slider-------- */
     .slider__content h1{
        font-size: 25px;
+       margin-bottom: 10px;
    }
 
    .slider__content p{
        font-size: 15px;
+       margin-bottom: 10px;
    }
 
    .slider__content a{
@@ -29,7 +31,6 @@
        top: 0;
        background-color: white;
        transform: translateX(-400px);
-       z-index: 2;
     }
 
    .nav-link .close{
@@ -129,7 +130,7 @@
 
 
     .link-login{
-        flex: 1;
+        flex: 2;
         display: inline-flex;
         justify-content: center;
     }

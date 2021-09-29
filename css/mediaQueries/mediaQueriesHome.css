@@ -1,0 +1,40 @@
+@media only screen and (max-width: 739px)  {
+    :root{
+        --color-orange:rgba(255, 68, 0);
+    }
+
+    .recipes{
+        display: block;
+    }
+
+    .featured{
+        width: 100%;
+        margin: 0;
+    }
+    
+    .main{
+        width: 100%;
+        margin: 0;
+    }
+
+    .content__items{
+        margin: 20px;
+    }
+   
+}
+
+@media only screen and (min-width: 740px) and (max-width:1023px)  {
+    :root{
+        --color-orange:rgba(255, 68, 0);
+    }
+
+    
+}
+
+@media only screen and (min-width: 1024px) and (max-width:1199px) {
+    
+}
+
+@media only screen and (min-width: 1200px){
+    
+}

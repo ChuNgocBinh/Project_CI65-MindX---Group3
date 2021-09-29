@@ -85,11 +85,6 @@ export default class Recipes extends BaseComponent {
 			let $dateModifier = document.createElement('p');
 			$dateModifier.classList.add("date-added")
 			$dateModifier.innerHTML = 'Ngày viết: ' + item.dateModifier;
-			
-			$metadata.append(
-				$author,
-				$dateModifier,
-			)
 
 			let $cardComment = document.createElement('div');
 			$cardComment.classList.add('item-comment');
@@ -145,9 +140,15 @@ export default class Recipes extends BaseComponent {
 			$spanView.classList.add('item');
 			$spanView.innerHTML = `<i class="fas fa-eye"></i><span class="number-view"> ${item.numberView}</span>`;
 
-			$cardComment.append($labelLike, $spanComment, $spanView)
+			$cardComment.append($labelLike, $spanComment, $spanView);
 
-			$cardContent.append($cardInfo, $metadata, $cardComment);
+			$metadata.append(
+				$author,
+				$dateModifier,
+				$cardComment,
+			)
+
+			$cardContent.append($cardInfo, $metadata);
 
 			$container.append($imgItem, $cardContent)
 

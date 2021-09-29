@@ -42,7 +42,7 @@ export default class Posts extends BaseComponent {
 			let $author = document.createElement('p');
 			$author.innerHTML = 'Người viết: ' + item.author;
 			let $dateModifier = document.createElement('p');
-			$dateModifier.innerHTML = item.dateModifier;
+			$dateModifier.innerHTML = 'Ngày viêt: ' + item.dateModifier;
 			let $linkDetail = document.createElement('a');
 			$linkDetail.href = '#';
 			$linkDetail.innerHTML = 'Xem chi tiết';
@@ -145,15 +145,6 @@ export default class Posts extends BaseComponent {
 		
 		$featured.append(postItem[0])
 
-
 		return [$featured,$main]
 	}
-
-
-
-
-
-
-
-
 }

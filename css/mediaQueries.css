@@ -1,0 +1,36 @@
+@media only screen and (max-width: 739px)  {
+    
+}
+
+@media only screen and (min-width: 740px) and (max-width:1023px)  {
+   .slider__content h1{
+       font-size: 40px;
+   }
+
+   .slider__content p{
+       font-size: 20px;
+   }
+
+   .slider__content a{
+       font-size: 15px;
+   }
+
+   
+
+
+
+
+
+
+
+
+
+}
+
+@media only screen and (min-width: 1024px) and (max-width:1199px) {
+    
+}
+
+@media only screen and (min-width: 1200px){
+    
+}

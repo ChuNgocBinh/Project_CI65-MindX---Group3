@@ -5,22 +5,26 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Trang chủ</title>
-    <link rel="icon" href="./img/favicon.png" type="image/x-icon">
+	<title>Giới thiệu</title>
+	<link rel="icon" href="./img/favicon.png" type="image/x-icon">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
 		integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="./css/home.css">
+	<link rel="stylesheet" href="./css/introduce.css">
 	<link rel="stylesheet" href="./css/mediaQueries/mediaQueriesNavbar.css">
 	<link rel="stylesheet" href="./css/mediaQueries/mediaQueriesHome.css">
 	<script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-app-compat.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-firestore-compat.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-auth-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-storage.js"></script>
 	<script>
-
 		const firebaseConfig = {
 			apiKey: "AIzaSyB2o9FBKHWXbKwr0cWeIjJF9sHGUet1S7I",
 			authDomain: "project-4fb10.firebaseapp.com",
@@ -39,18 +43,16 @@
 <body>
 	<div class="container">
 		<div class="header"></div>
-		<div class="slider">
-			<video src="./img/video.mp4" width="100%" autoplay loop></video>
-			<div class="slider__content">
-				<h1>HÔM NAY ĂN GÌ?</h1>
-				<p>Hướng dẫn chọn thực đơn bữa tối cho mọi gia đình Việt...</p>
-				<a href="./allRecipes.html">Tìm hiểu thêm</a>
-			</div>
+		<div class="content">
+			<h1>Hôm nay ăn gì?</h1>
+			<p> Với phương châm: <br> <h2>The KitChen is the Heart of the HOME</h2></p>
+			<p><i>Page được phát triển bởi đội ngũ admin, và các bạn độc giả yêu thích nấu nướng, <br> với mong muốn mang lại mỗi bữa cơm ngon và bổ dưỡng cho mọi gia đình việt. </i></p>
+			<br>
+			<p><i> Là nơi để các bạn độc giả thỏa sức sáng tạo, sẻ chia những công thức nấu ăn ngon, thú vị cùng nhau xây dựng một trái tim gia đình hạnh phúc  </i></p>
+			<br>
+			<p>Mọi thông tin chi tiết vui lòng liên hệ đội ngũ Admin =>> <a href="./Contact.html">Go to contact</a></p>
 		</div>
-		<div class="recipes">
-			<!-- <div class="featured"></div>
-			<div class="main"></div> -->
-		</div>
+
 		<!-- -----footer----------------->
 		<footer></footer>
 		<div class="copyright">
@@ -59,7 +61,6 @@
 	</div>
 
 	<script type="module" src="./js/main.js"></script>
-	<script type="module" src="./js/home.js"></script>
 
 </body>
 

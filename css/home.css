@@ -54,6 +54,10 @@
 
 }
 
+.link-bg-active{
+    background-color: var(--color-orange);
+}
+
 .nav-link > ul{
     list-style-type: none;
     display: flex;

@@ -23,17 +23,17 @@ export default class Navbar extends BaseComponent {
 		let $navUl = document.createElement('ul');
 		$navUl.classList.add('nav');
 		$navUl.innerHTML = `
-						<li class="nav-item nav-padding link-active"><div class = "icon-nav"><i class="fas fa-home"></i></div><a href="./home.html">Trang chủ</a></li>
+						<li class="nav-item nav-padding nav-home"><div class = "icon-nav"><i class="fas fa-home"></i></div><a href="./home.html">Trang chủ</a></li>
 						<li class="nav-item dropdown"><a href="#">Công thức <i class="fas fa-angle-down"></i></a>
 							<ul class="sub-nav">
-								<li class ="sub-nav-item"><div class = "icon-nav"><i class="fas fa-plus-circle"></i></div><a href="./createPost.html">Tạo món ăn</a></li>
-								<li class ="sub-nav-item"><div class = "icon-nav"><i class="fas fa-bookmark"></i></div><a href="./listPosts.html">Các món ăn đã thêm</a></li>
-								<li class ="sub-nav-item"><div class = "icon-nav"><i class="fas fa-list"></i></div><a href="./allRecipes.html">Danh sách món ăn</a></li>
-								<li class ="sub-nav-item"><div class = "icon-nav"><i class="fas fa-thumbs-up"></i></div><a href="./favoriteFood.html">Món ăn ưa thích</a></li>
+								<li class ="sub-nav-item nav-create "><div class = "icon-nav"><i class="fas fa-plus-circle"></i></div><a href="./createPost.html">Tạo món ăn</a></li>
+								<li class ="sub-nav-item nav-postAdded"><div class = "icon-nav"><i class="fas fa-bookmark"></i></div><a href="./listPosts.html">Các món ăn đã thêm</a></li>
+								<li class ="sub-nav-item nav-listPosts"><div class = "icon-nav"><i class="fas fa-list"></i></div><a href="./allRecipes.html">Danh sách món ăn</a></li>
+								<li class ="sub-nav-item nav-favorite"><div class = "icon-nav"><i class="fas fa-thumbs-up"></i></div><a href="./favoriteFood.html">Món ăn ưa thích</a></li>
 							</ul>
 						</li>
-						<li class="nav-item nav-padding"><div class = "icon-nav"><i class="fas fa-users"></i></div><a href="#">Giới thiệu</a></li>
-						<li class="nav-item nav-padding"><div class = "icon-nav"><i class="fas fa-phone"></i></div><a href="#">Liên hệ</a></li>
+						<li class="nav-item nav-padding nav-introduce"><div class = "icon-nav"><i class="fas fa-users"></i></div><a href="./Introduce.html">Giới thiệu</a></li>
+						<li class="nav-item nav-padding nav-contact"><div class = "icon-nav"><i class="fas fa-phone"></i></div><a href="./Contact.html">Liên hệ</a></li>
 						`
 		$navLink.append($close,$navUl)
 			

@@ -1,48 +1,35 @@
 import BaseComponent from "../components/BaseComponent.js";
 import inputWraper from "../components/inputWraper.js";
 import TextAreaWraper from "../components/textAreaWrapper.js";
-import setPosts from "../models/postFireBase.js";
+import { updateFood } from "../models/postFireBase.js";
 
-export default class CreatePosts extends BaseComponent {
+export default class EditFood extends BaseComponent {
 
-    constructor(props) {
+    constructor(props){
         super(props);
-        this.state = {
-            // lưu dữ liệu người dùng nhập vào
-            data: {
-                nameFood: '',
-                desciptionFood: '',
-                linkImgFood: '',
-                tutorialFood: '',
-                levelFood: '',
-                timeFood: '',
-                materialFood: '',
-                processFood: '',
-                skillFood: '',
-            },
-
-            // lưu thông tin về lỗi của các truờng thông tin
-            errors: {
-                nameFood: '',
-                desciptionFood: '',
-                linkImgFood: '',
-                tutorialFood: '',
-                levelFood: '',
-                timeFood: '',
-                materialFood: '',
-                processFood: '',
-                skillFood: '',
-            }
-        };
+        this.state ={}
     }
 
     handleInputChange = (name, value) => {
-        let tmpState = this.state;
-        tmpState.data[name] = value.trim();
-        this.setState(tmpState)
+        this.state[name] = value.trim();
+        console.log(this.state)
     }
+    
+    async render() {
+        let idEditFoodJson = localStorage.getItem('idEditFood')
+        let idEditFood = JSON.parse(idEditFoodJson);
+        console.log(idEditFood);
 
-    render() {
+        let contentFood = [];
+        await db.collection('Post').get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                if (doc.id == idEditFood) {
+                    contentFood.push(doc.data())
+                }
+            })
+        })
+
+        console.log(contentFood);
 
         let $title = document.createElement('h2');
         $title.classList.add('title');
@@ -51,8 +38,8 @@ export default class CreatePosts extends BaseComponent {
         let _nameFood = new inputWraper({
             placeholder: 'Nhập tên món ăn',
             type: 'text',
-            value: this.state.data.nameFood,
-            error: this.state.errors.nameFood,
+            value: contentFood[0].nameFood,
+            error: '',
             onchange: (e) => {
                 this.handleInputChange('nameFood', e.target.value)
             }
@@ -61,8 +48,8 @@ export default class CreatePosts extends BaseComponent {
         let _desciptionFood = new inputWraper({
             placeholder: 'Nhập mô tả món ăn',
             type: 'text',
-            value: this.state.data.desciptionFood,
-            error: this.state.errors.desciptionFood,
+            value: contentFood[0].desciptionFood,
+            error: '',
             onchange: (e) => {
                 this.handleInputChange('desciptionFood', e.target.value)
             }
@@ -72,7 +59,7 @@ export default class CreatePosts extends BaseComponent {
             placeholder: 'Nhập đường dẫn ảnh minh họa món ăn',
             type: 'file',
             value: "",
-            error: this.state.errors.linkImgFood,
+            error: '',
             onchange: async (e) => {
                 // process image////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 var image = e.target.files[0];
@@ -129,8 +116,8 @@ export default class CreatePosts extends BaseComponent {
         let _tutorialFood = new inputWraper({
             placeholder: 'Nhập đường dẫn video hướng dẫn món ăn',
             type: 'text',
-            value: this.state.data.tutorialFood,
-            error: this.state.errors.tutorialFood,
+            value: contentFood[0].tutorialFood,
+            error: '',
             onchange: (e) => {
                 this.handleInputChange('tutorialFood', e.target.value)
             }
@@ -139,8 +126,8 @@ export default class CreatePosts extends BaseComponent {
         let _levelFood = new inputWraper({
             placeholder: 'Nhập mức độ khó món ăn',
             type: 'text',
-            value: this.state.data.levelFood,
-            error: this.state.errors.levelFood,
+            value: contentFood[0].levelFood,
+            error: '',
             onchange: (e) => {
                 this.handleInputChange('levelFood', e.target.value)
             }
@@ -149,8 +136,8 @@ export default class CreatePosts extends BaseComponent {
         let _timeFood = new inputWraper({
             placeholder: 'Nhập thời gian thực hiện món ăn',
             type: 'text',
-            value: this.state.data.timeFood,
-            error: this.state.errors.timeFood,
+            value: contentFood[0].timeFood,
+            error: '',
             onchange: (e) => {
                 this.handleInputChange('timeFood', e.target.value)
             }
@@ -158,8 +145,8 @@ export default class CreatePosts extends BaseComponent {
 
         let _materialFood = new TextAreaWraper({
             placeholder: 'Nhập nguyên liệu thực hiện món ăn',
-            value: this.state.data.materialFood,
-            error: this.state.errors.materialFood,
+            value: contentFood[0].materialFood,
+            error: '',
             onchange: (e) => {
                 this.handleInputChange('materialFood', e.target.value)
             }
@@ -167,8 +154,8 @@ export default class CreatePosts extends BaseComponent {
 
         let _processlFood = new TextAreaWraper({
             placeholder: 'Nhập cách sơ chế món ăn',
-            value: this.state.data.processFood,
-            error: this.state.errors.processFood,
+            value: contentFood[0].processFood,
+            error: '',
             onchange: (e) => {
                 this.handleInputChange('processFood', e.target.value)
             }
@@ -176,8 +163,8 @@ export default class CreatePosts extends BaseComponent {
 
         let _skillFood = new TextAreaWraper({
             placeholder: 'Nhập cách chế biến món ăn',
-            value: this.state.data.skillFood,
-            error: this.state.errors.skillFood,
+            value: contentFood[0].skillFood,
+            error: '',
             onchange: (e) => {
                 this.handleInputChange('skillFood', e.target.value)
             }
@@ -185,7 +172,7 @@ export default class CreatePosts extends BaseComponent {
 
         let $btnSubmit = document.createElement('button');
         $btnSubmit.classList.add('btn');
-        $btnSubmit.innerHTML = 'Tạo bài viết';
+        $btnSubmit.innerHTML = 'Sửa bài viết';
 
         let $form = document.createElement('form');
         $form.classList.add('create__post');
@@ -210,121 +197,53 @@ export default class CreatePosts extends BaseComponent {
 
     handleValid = (e) => {
         e.preventDefault();
-        let data = this.state.data;
-        let errors = this.state.errors;
+        let data = this.state;
 
         let isPassed = true;
 
         if (data.nameFood == '') {
-            errors.nameFood = 'Vui lòng nhập tên món ăn';
             isPassed = false;
         }
 
         if (data.desciptionFood == '') {
-            errors.desciptionFood = 'Vui lòng nhập mô tả món ăn';
             isPassed = false;
         }
 
         if (data.linkImgFood == '') {
-            errors.linkImgFood = 'Vui lòng nhập đường dẫn ảnh minh họa món ăn';
             isPassed = false;
         }
 
         if (data.tutorialFood == '') {
-            errors.tutorialFood = 'Vui lòng nhập đường dẫn video hướng dẫn món ăn';
             isPassed = false;
         }
 
         if (data.levelFood == '') {
-            errors.levelFood = 'Vui lòng nhập độ khó món ăn';
             isPassed = false;
         }
 
         if (data.timeFood == '') {
-            errors.timeFood = 'Vui lòng nhập thời gian thực hiện món ăn';
             isPassed = false;
         }
 
         if (data.materialFood == '') {
-            errors.materialFood = 'Vui lòng nhập nguyên liệu thực hiện món ăn';
             isPassed = false;
         }
 
         if (data.processFood == '') {
-            errors.processFood = 'Vui lòng nhập cách sơ chế món ăn';
             isPassed = false;
         }
 
         if (data.skillFood == '') {
-            errors.skillFood = 'Vui lòng nhập cách chế biến món ăn';
             isPassed = false;
         }
         console.log(isPassed)
 
-        let tmpState = this.state;
-        tmpState.errors = errors
-        this.setState(tmpState)
-
         if (isPassed) {
-            setPosts(this.state.data)
-        }else{
-            alert('Yêu cầu nhập đầy đủ thông tin món ăn')
+            let idEditFoodJson = localStorage.getItem('idEditFood')
+            let idEditFood = JSON.parse(idEditFoodJson);
+            console.log(idEditFood);
+            console.log(data);
+            updateFood('Post', idEditFood,data)
         }
     }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var editor;
-// ClassicEditor
-//     .create(document.querySelector('#editor'))
-//     .then(newEditor => {
-//         editor = newEditor;
-//     })
-//     .catch(error => {
-//         console.error(error);
-//     });
-
-// let btn = document.querySelector('.post-btn');
-// btn.onclick = function () {
-//     let data = editor.getData();
-//     editor.setData("")
-
-//     db.collection("Posts").add({
-//         title: title.value,
-//         subTitle: subTitle.value,
-//         image: image.value,
-//         textContent: data
-//     })
-//         .then((docRef) => {
-//             console.log("Document written with ID: ", docRef.id);
-//         })
-//         .catch((error) => {
-//             console.error("Error adding document: ", error);
-//         });
-
-//     // window.location.href = './listPosts.html'
-// }
-
-
-

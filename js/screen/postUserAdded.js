@@ -104,7 +104,7 @@ export default class ListPostsUserAdded extends BaseComponent {
 			$editPost.onclick = function(e){
 				console.log(myPostAddedId[index])
 				localStorage.setItem('idEditFood', JSON.stringify(myPostAddedId[index]));
-				window.location.href = './createPost.html'
+				window.location.href = './editFood.html'
 			}
 
 			$itemInfo.append(

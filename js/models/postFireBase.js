@@ -35,6 +35,11 @@ export async function updateInteract(collection,doc,data){
     await db.collection(`${collection}`).doc(doc).update(data)
 }
 
+export async function updateFood(collection,doc,data){
+    await db.collection(`${collection}`).doc(doc).update(data)
+    window.location.href = './listPosts.html'
+}
+
 export async function deletePost(collection,doc){
     await db.collection(collection).doc(doc).delete()
 }

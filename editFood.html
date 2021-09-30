@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi tiết</title>
+    <title>Chỉnh sửa món ăn</title>
     <link rel="icon" href="./img/favicon.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,13 +15,15 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script>
     <link rel="stylesheet" href="./css/home.css">
-    <link rel="stylesheet" href="./css/detail.css">
-    <link rel="stylesheet" href="./css/mediaQueriesNavbar.css">
-    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-storage.js"></script>
+    <link rel="stylesheet" href="./css/createPost.css">
+    <link rel="stylesheet" href="./css/mediaQueries/mediaQueriesNavbar.css">
+    <link rel="stylesheet" href="./css/mediaQueries/mediaQueriesCreate.css">
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-storage-compat.js"></script>
     <script>
+
         const firebaseConfig = {
             apiKey: "AIzaSyB2o9FBKHWXbKwr0cWeIjJF9sHGUet1S7I",
             authDomain: "project-4fb10.firebaseapp.com",
@@ -34,22 +36,25 @@
         const firebaseApp = firebase.initializeApp(firebaseConfig);
         const db = firebaseApp.firestore();
         const auth = firebaseApp.auth();
+        const storage = firebaseApp.storage();
     </script>
 
 </head>
 
 <body>
+   
     <div class="container">
         <div class="header"></div>
-        <div class="master"></div>
-
+        <div class="main"></div>
         <!-- -----footer--------------- -->
         <footer></footer>
         <div class="copyright">
             <p>Copyright © 2021 Group 3 MindX. All Rights Reserved</p>
         </div>
     </div>
+
     <script type="module" src="./js/main.js"></script>
-    <script type="module" src="./js/renderDetail.js"></script>
+    <script type="module" src="./js/renderEditFood.js"></script>
 </body>
+
 </html>

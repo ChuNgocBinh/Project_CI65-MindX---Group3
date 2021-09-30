@@ -1,0 +1,57 @@
+*{
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --color-orange:rgba(255, 68, 0);
+}
+
+.content{
+    min-height: 100vh;
+    background-image: url('../img/introduce.jpeg');
+    padding-top: 70px;
+}
+
+
+.content h1{
+    margin: 0 20px;
+    color: var(--color-orange);
+    font-family: 'Italianno', cursive;
+    font-size: 120px;
+    /* color: white; */
+    
+}
+
+.content p{
+    margin-left: 50px;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.content i{
+    margin-left: 50px;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.content h2{
+    margin-left: 70px;
+    color: white;
+    font-family: 'Italianno', cursive;
+    font-size: 100px;
+}
+
+.content a{
+    color: white;
+}
+
+.content a:hover{
+    color: var(--color-orange);
+}

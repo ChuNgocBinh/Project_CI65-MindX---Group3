@@ -1,0 +1,101 @@
+*{
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --color-orange:rgba(255, 68, 0);
+}
+
+.content{
+    margin-top: 70px;
+    margin-bottom: 30px;
+}
+
+.content > h4{
+    font-size: 20px;
+    text-align: center;
+}
+
+.facebook a{
+    color: black;
+}
+
+.facebook a:hover{
+    color: var(--color-orange);
+}
+
+.content > h3{
+    font-size: 30px;
+    text-align: center;
+    margin-top: 20px;
+    color: var(--color-orange);
+}
+
+.content > hr{
+    width: 450px;
+    margin: auto;
+}
+
+.content .contact{
+    display: flex;
+    margin-top: 40px;
+    align-items: center;
+}
+
+.social-network{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 20%;
+    /* border-right: 1px #ccc solid; */
+}
+
+.contact-group {
+    display: flex;
+    margin-bottom: 50px;
+    align-items: center;
+}
+
+.contact img{
+    width: 50px;
+}
+
+.contact .contact-content{
+    margin-left: 20px;
+}
+
+.direct{
+    width: 50%;
+}
+
+.form-group label{
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+    
+}
+
+.form-group input{
+    display: block;
+    margin-bottom: 10px;
+    width: 500px;
+    height: 30px;
+    
+}
+
+.form-group textarea{
+    display: block;
+    margin-bottom: 10px;
+    width: 500px;
+    height: 100px;
+}
+
+.contact button{
+    width: 150px;
+    height: 30px;
+    font-size: 15px;
+    font-weight: 600;
+}

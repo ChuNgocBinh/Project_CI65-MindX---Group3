@@ -16,7 +16,7 @@ export default class Navbar extends BaseComponent {
 		$close.classList.add('close');
 		$close.innerHTML = `<i class="fas fa-times"></i>`
 		$close.onclick = ()=>{
-			$navLink.style.transform = 'translateX(-400px)'
+			$navLink.style.transform = 'translateX(-50vw)'
 			$navLink.style.transition = '0.3s linear'
 		}
 
@@ -73,7 +73,7 @@ export default class Navbar extends BaseComponent {
 		$bars.classList.add('bars');
 		$bars.innerHTML = `<i class="fas fa-bars"></i>`
 		$bars.onclick = () => {
-			$navLink.style.transform = 'translateX(0px)'
+			$navLink.style.transform = 'translateX(0)'
 			$navLink.style.transition = '0.3s linear'
 		}
 

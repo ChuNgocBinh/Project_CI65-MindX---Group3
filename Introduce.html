@@ -61,7 +61,13 @@
 	</div>
 
 	<script type="module" src="./js/main.js"></script>
-
+	<script>
+		window.onload = function () {
+			let $navIntroduce = document.querySelector('.nav-introduce');
+			$navIntroduce.classList.add('link-active');
+			$navIntroduce.classList.add('link-bg-active');
+		}
+	</script>
 </body>
 
 </html>

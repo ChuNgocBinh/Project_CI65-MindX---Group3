@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Liên hệ</title>
-    <link rel="icon" href="./img/favicon.png" type="image/x-icon">
+	<link rel="icon" href="./img/favicon.png" type="image/x-icon">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -19,29 +19,29 @@
 	<link rel="stylesheet" href="./css/mediaQueries/mediaQueriesNavbar.css">
 	<link rel="stylesheet" href="./css/mediaQueries/mediaQueriesHome.css">
 	<script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-storage.js"></script>
-    <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyB2o9FBKHWXbKwr0cWeIjJF9sHGUet1S7I",
-            authDomain: "project-4fb10.firebaseapp.com",
-            projectId: "project-4fb10",
-            storageBucket: "project-4fb10.appspot.com",
-            messagingSenderId: "1011810849176",
-            appId: "1:1011810849176:web:11a9214aafbc461ae61bed"
-        };
+	<script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-firestore-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-auth-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-storage.js"></script>
+	<script>
+		const firebaseConfig = {
+			apiKey: "AIzaSyB2o9FBKHWXbKwr0cWeIjJF9sHGUet1S7I",
+			authDomain: "project-4fb10.firebaseapp.com",
+			projectId: "project-4fb10",
+			storageBucket: "project-4fb10.appspot.com",
+			messagingSenderId: "1011810849176",
+			appId: "1:1011810849176:web:11a9214aafbc461ae61bed"
+		};
 
-        const firebaseApp = firebase.initializeApp(firebaseConfig);
-        const db = firebaseApp.firestore();
-        const auth = firebaseApp.auth();
-    </script>
+		const firebaseApp = firebase.initializeApp(firebaseConfig);
+		const db = firebaseApp.firestore();
+		const auth = firebaseApp.auth();
+	</script>
 </head>
 
 <body>
 	<div class="container">
 		<div class="header"></div>
-        <div class="content">
+		<div class="content">
 			<h4>Mọi vấn đề thắc mắc xin vui lòng liên về với chúng tôi theo các cách sau:</h4>
 			<h3>Thông tin liên hệ</h3>
 			<hr>
@@ -62,7 +62,8 @@
 						</div>
 					</div>
 					<div class="contact-group mail">
-						<img src="https://ungdungtinhoc.com/wp-content/uploads/2018/10/Difference-Between-Email-and-Gmail.png" alt="email">
+						<img src="https://ungdungtinhoc.com/wp-content/uploads/2018/10/Difference-Between-Email-and-Gmail.png"
+							alt="email">
 						<div class="contact-content mail-content">
 							<h3>Email</h3>
 							<h4>homnayangi@gmail.com</h3>
@@ -70,7 +71,7 @@
 					</div>
 				</div>
 				<div class="direct">
-					<form >
+					<form>
 						<div class="form-group">
 							<label for="name">Họ Tên</label>
 							<input type="text" id="name" name="name">
@@ -85,7 +86,7 @@
 						</div>
 						<div class="form-group">
 							<label for="direct-content">Nội dung</label>
-							<textarea name="direct-content" id="direct-content" ></textarea>
+							<textarea name="direct-content" id="direct-content"></textarea>
 						</div>
 						<button>Gửi liên hệ</button>
 					</form>
@@ -99,5 +100,12 @@
 		</div>
 	</div>
 	<script type="module" src="./js/main.js"></script>
+	<script>
+		window.onload = function () {
+			let $navContact = document.querySelector('.nav-contact');
+			$navContact.classList.add('link-active');
+			$navContact.classList.add('link-bg-active');
+		}
+	</script>
 
 </html>

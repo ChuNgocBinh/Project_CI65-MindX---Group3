@@ -58,7 +58,7 @@ body{
 .checkPass {
 	position: absolute;
 	top: 30px;
-	left: 270px;
+	right: 10px;
 	cursor: pointer;
 }
 

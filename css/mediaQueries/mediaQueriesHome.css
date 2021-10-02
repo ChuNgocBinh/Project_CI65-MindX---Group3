@@ -24,6 +24,18 @@
     .slider__content{
         left: 5%;
     }
+
+    .main .content__items{
+        flex-direction: column;
+    }
+
+    .main .content__items .img-item{
+        margin: auto;
+    }
+
+    .main .content__items{
+        flex-direction: column;
+    }
    
 }
 
@@ -31,7 +43,13 @@
     :root{
         --color-orange:rgba(255, 68, 0);
     }
+    .main .content__items .img-item{
+        margin: auto;
+    }
 
+    .main .content__items{
+        flex-direction: column;
+    }
     
 }
 

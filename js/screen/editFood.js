@@ -33,7 +33,7 @@ export default class EditFood extends BaseComponent {
 
         let $title = document.createElement('h2');
         $title.classList.add('title');
-        $title.innerHTML = 'Tạo món ăn mới'
+        $title.innerHTML = 'Chỉnh sửa món ăn'
 
         let _nameFood = new inputWraper({
             placeholder: 'Nhập tên món ăn',

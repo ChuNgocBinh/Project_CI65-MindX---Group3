@@ -41,7 +41,7 @@ export default class Navbar extends BaseComponent {
 		$inputSearch.classList.add('input-search');
 		let $search = document.createElement('input');
 		$search.type = "search";
-		$search.placeholder = "Search..."
+		$search.placeholder = "Tìm kiếm..."
 		$search.id = "search";
 		$search.addEventListener("keyup", function (e) {
 			if (e.key === "Enter") {

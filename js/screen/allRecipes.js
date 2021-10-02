@@ -18,7 +18,7 @@ export default class Recipes extends BaseComponent {
 		})
 		let $search = document.createElement('input');
 		$search.type="search";
-		$search.placeholder="Search..."
+		$search.placeholder="Tìm kiếm..."
 		$search.id = "searchAYT";
 		$search.addEventListener("keyup", function(e){
 				search($search.value)

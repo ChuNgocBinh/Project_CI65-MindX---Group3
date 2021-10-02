@@ -51,7 +51,9 @@ export default class Navbar extends BaseComponent {
 		let $btnSearch = document.createElement('button');
 		$btnSearch.class = "btn-search";
 		$btnSearch.addEventListener("click", function () {
-			search($search.value)
+			if (!($search.value == "" || $search.value === null)) {
+				search($search.value)
+			}
 		});
 		$btnSearch.innerHTML = `
 			<i class="fas fa-search"></i>

@@ -15,7 +15,7 @@ export async function register(name, email, password) {
 export async function login(email, password) {
     try {
         await auth.signInWithEmailAndPassword(email, password); // xảy ra hiện tượng bất đồng bộ
-        window.location.href = './home.html'
+        window.location.href = './index.html'
     } catch (error) {
         // alert(error.message)
         if (error.message == 'Firebase: There is no user record corresponding to this identifier. The user may have been deleted. (auth/user-not-found).') {

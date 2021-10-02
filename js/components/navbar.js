@@ -23,7 +23,7 @@ export default class Navbar extends BaseComponent {
 		let $navUl = document.createElement('ul');
 		$navUl.classList.add('nav');
 		$navUl.innerHTML = `
-						<li class="nav-item nav-padding nav-home"><div class = "icon-nav"><i class="fas fa-home"></i></div><a href="./home.html">Trang chủ</a></li>
+						<li class="nav-item nav-padding nav-home"><div class = "icon-nav"><i class="fas fa-home"></i></div><a href="./index.html">Trang chủ</a></li>
 						<li class="nav-item dropdown"><a href="#">Công thức <i class="fas fa-angle-down"></i></a>
 							<ul class="sub-nav">
 								<li class ="sub-nav-item nav-create "><div class = "icon-nav"><i class="fas fa-plus-circle"></i></div><a href="./createPost.html">Tạo món ăn</a></li>

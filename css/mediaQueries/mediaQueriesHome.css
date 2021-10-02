@@ -20,6 +20,10 @@
     .content__items{
         margin: 20px;
     }
+
+    .slider__content{
+        left: 5%;
+    }
    
 }
 

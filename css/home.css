@@ -115,6 +115,7 @@
 .link-login .nameUser{
     padding: 20px 0;
     width: 125px;
+    text-align: center;
 }
 
 .link-login .logOutUser{

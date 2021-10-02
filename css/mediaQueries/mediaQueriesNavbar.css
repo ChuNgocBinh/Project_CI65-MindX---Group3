@@ -20,6 +20,10 @@
    }
 
    /* ------navbar----- */
+   .navbar{
+       height: 40px;
+   }
+
    .bars{
     display: block;
     margin-left: 20px;
@@ -135,9 +139,18 @@
         justify-content: center;
     }
 
+    .link-login > a{
+        font-size: 13px;
+    }
+
+    .link-login > .nameUser
+    {
+        font-size: 13px;
+    }
+
     .link-login .logOutUser {
         position: absolute;
-        top: 60px;
+        top: 48px;
     }
 
     /* ---------footer----------- */
@@ -155,6 +168,28 @@
         padding: 0 50px;
         
     } 
+
+    .footer__about-content{
+        flex-direction: column;
+    }
+
+    .footer__about-content > img{
+        width: 100px;
+        height: auto;
+        margin: auto;
+    }
+
+    .footer__about-content > p{
+        padding: 0;
+    }
+
+    .footer__about-icons > ul{
+        margin-left: 50px;
+    }
+
+    .copyright{
+        text-align: center;
+    }
 }
 
 @media only screen and (min-width: 740px) and (max-width:1023px)  {
